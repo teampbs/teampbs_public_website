@@ -69,17 +69,24 @@ const NewsDetails = () => {
             background={colors.white}
           >
             <Flexbox justify='center' gap='.5rem' col margin='35px 0'>
-              <img
+              <div
                 css={{
-                  borderRadius: '50%',
+                  position: 'relative',
                   width: '160px',
                   height: '160px',
-                  position: 'absolute',
-                  bottom: 220,
+                  marginTop: '-10rem',
                 }}
-                src='/images/about_us_banner.png'
-                alt='picture'
-              />
+              >
+                <img
+                  css={{
+                    borderRadius: '50%',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                  src='/images/about_us_banner.png'
+                  alt='picture'
+                />
+              </div>
               <h2
                 css={{ padding: '25px 0', fontSize: 32, color: colors.black10 }}
               >

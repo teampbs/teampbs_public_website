@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Frame } from 'components/Header/styles'
 import { ILogo } from 'interfaces'
 import { mq } from 'styles/styles'
+import Link from 'next/link'
 
 const logoStyle = {
   margin: [
@@ -26,16 +27,39 @@ const menuStyle = {
   margin: ['0 auto 0 0', '0 auto 0 0', '0 auto 0 0', '0 auto 0 auto'],
 }
 
-const Logo: FC<ILogo> = ({ src, alt, width, height, isLogo, isScroll }) => (
+const Logo: FC<ILogo> = ({
+  src,
+  alt,
+  width,
+  height,
+  isLogo,
+  isScroll,
+  link,
+}) => (
   <Frame css={mq(isLogo ? (isScroll ? logoStyleFix : logoStyle) : menuStyle)}>
-    <Image
-      width={width}
-      height={height}
-      src={src}
-      alt={alt}
-      quality={100}
-      priority
-    />
+    {link ? (
+      <Link href={link}>
+        <a>
+          <Image
+            width={width}
+            height={height}
+            src={src}
+            alt={alt}
+            quality={100}
+            priority
+          />
+        </a>
+      </Link>
+    ) : (
+      <Image
+        width={width}
+        height={height}
+        src={src}
+        alt={alt}
+        quality={100}
+        priority
+      />
+    )}
   </Frame>
 )
 

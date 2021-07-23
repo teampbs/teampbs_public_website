@@ -1,6 +1,6 @@
 const dropDownLinks_1 = [
   { parentId: 111, href: '/aba-services', title: 'Eligibility' },
-  { parentId: 111, href: '/resource-center', title: 'Request ABA Therapy' },
+  { parentId: 111, href: '/request-aba-services', title: 'Request ABA Therapy' },
 ]
 
 const dropDownLinks_2 = [

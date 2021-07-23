@@ -25,23 +25,27 @@ const StickyNav: FC<IStickyNav> = ({ scrolling }) => (
       scrolling ? 'top-0' : 'top-12'
     } px-12 h-8 ${scrolling && stickyStyles}`}
   >
-    <Logo
-      src={
-        scrolling ? '/images/shared/menu_fix.png' : '/images/shared/menu.png'
-      }
-      alt='menu icon'
-      width='32'
-      height='22'
-      isScroll={scrolling}
-    />
-    <Logo
-      isLogo
-      src={scrolling ? '/images/logo_main_fix.png' : '/images/logo_main_hp.png'}
-      alt='logo'
-      width={scrolling ? '185' : '250'}
-      height={scrolling ? '40' : '50'}
-      isScroll={scrolling}
-    />
+        <Logo
+          src={
+            scrolling
+              ? '/images/shared/menu_fix.png'
+              : '/images/shared/menu.png'
+          }
+          alt='menu icon'
+          width='32'
+          height='22'
+          isScroll={scrolling}
+        />
+        <Logo
+          isLogo
+          src={
+            scrolling ? '/images/logo_main_fix.png' : '/images/logo_main_hp.png'
+          }
+          alt='logo'
+          width={scrolling ? '185' : '250'}
+          height={scrolling ? '40' : '50'}
+          isScroll={scrolling}
+        />
     <NavHolder>
       {navs.map((link) => (
         <NavLink

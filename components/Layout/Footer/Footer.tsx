@@ -5,6 +5,8 @@ import Logo from 'components/Header/Logo'
 import Button from 'components/shared/Button'
 import { colors } from 'utils/constants'
 import { mq } from 'styles/styles'
+import Link from 'next/link'
+import { FC } from 'react'
 
 const Container = styled.footer({
   display: 'flex',
@@ -19,7 +21,7 @@ const Content = styled.div({
 })
 
 const ContentMq = mq({
-  padding: ['0', '0', '0', '0 0 0 5rem']
+  padding: ['0', '0', '0', '0 0 0 5rem'],
 })
 
 const ContainerMq = mq({
@@ -44,7 +46,7 @@ const Title = styled.h3({
   color: colors.black10,
   fontWeight: 700,
   fontSize: '16px',
-  margin: '0 0 20px 0',  
+  margin: '0 0 20px 0',
   padding: '0 0 10 0',
 })
 
@@ -62,7 +64,7 @@ const NavLinks = styled.ul({
 })
 
 const NavLinksMq = mq({
-  minWidth: [200, 200, 200, 200]
+  minWidth: [200, 200, 200, 200],
 })
 
 const Copyright = styled.p({
@@ -90,34 +92,54 @@ const ControllerMq = mq({
 
 const buttons = [
   { title: 'Find RBT Training', src: '/images/nav_docs_dark.png', alt: 'docs' },
-  { title: 'Parent Portal Login', src: '/images/nav_profile.png', alt: 'portal' },
+  {
+    title: 'Parent Portal Login',
+    src: '/images/nav_profile.png',
+    alt: 'portal',
+  },
   { title: 'Team PBS login', src: '/images/nav_profile.png', alt: 'docs' },
 ]
+
+const LinkList: FC<{ url: string }> = ({ children, url }) => (
+  <Link href={url}>
+    <a>
+      <li css={{
+    padding: '8px 15px 8px 0',
+  }}>{children}</li>
+    </a>
+  </Link>
+)
 
 const Footer = () => (
   <Container css={ContainerMq}>
     <div css={{ marginBottom: 'auto' }}>
-      <Logo isLogo src='/images/footer_logo.png' alt='logo' width='145' height='145' />
+      <Logo
+        isLogo
+        src='/images/footer_logo.png'
+        alt='logo'
+        width='145'
+        height='145'
+      />
     </div>
     <Content css={ContentMq}>
       <Nav css={NavMq}>
         <NavLinks css={NavLinksMq}>
           <Title>Apply for ABA Therapy</Title>
-          <li>Eligibility</li>
-          <li>Request ABA Therapy</li>
+          <LinkList url='/aba-services'>Eligibility</LinkList>
+          <LinkList url='/request-aba-services'>Request ABA Therapy</LinkList>
         </NavLinks>
         <NavLinks css={NavLinksMq}>
           <Title>About</Title>
-          <li>About PBS Corporation</li>
-          <li>About ABA</li>
-          <li>Company Videos</li>
-          <li>Contact Us</li>
-          <li>Resources</li>
+          <LinkList url='/about-team-pbs'>About PBS Corporation</LinkList>
+          <LinkList url='/what-is-applied-behavior-analysis'>About ABA</LinkList>
+          <LinkList url='/team-pbs-videos'>Company Videos</LinkList>
+          <LinkList url='/contact/region'>Contact Us</LinkList>
+          <LinkList url='/resource-center'>Resources</LinkList>
         </NavLinks>
         <NavLinks css={NavLinksMq}>
           <Title>Careers</Title>
-          <li>Abailable Positions</li>
-          <li>Work With Us</li>
+          <LinkList url='/careers'>Available Positions</LinkList>
+          <LinkList url='/job-application'>Work With Us</LinkList>
         </NavLinks>
         <NavLinks css={NavLinksMq}>
           <Title>Customer service</Title>
@@ -141,12 +163,7 @@ const Footer = () => (
       <Controller css={ControllerMq}>
         {buttons.map((btn, index) => (
           <Button key={index}>
-            <Logo
-              src={btn.src}
-              alt={btn.alt}
-              width={15}
-              height={15}
-            />
+            <Logo src={btn.src} alt={btn.alt} width={15} height={15} />
             {btn.title}
           </Button>
         ))}
