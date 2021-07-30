@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { FC } from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
@@ -12,6 +11,7 @@ const stickyStyles = ' bg-white text-black00 py-10 w-full fixed z-50 transition'
 
 interface IStickyNav {
   scrolling: boolean
+  black?: boolean
 }
 
 const NavHolder = styled.div({
@@ -19,33 +19,30 @@ const NavHolder = styled.div({
   margin: ' 0 auto 0 -2rem',
 })
 
-const StickyNav: FC<IStickyNav> = ({ scrolling }) => (
+const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => (
   <div
     className={`flex justify-center items-center relative ${
       scrolling ? 'top-0' : 'top-12'
     } px-12 h-8 ${scrolling && stickyStyles}`}
   >
-        <Logo
-          src={
-            scrolling
-              ? '/images/shared/menu_fix.png'
-              : '/images/shared/menu.png'
-          }
-          alt='menu icon'
-          width='32'
-          height='22'
-          isScroll={scrolling}
-        />
-        <Logo
-          isLogo
-          src={
-            scrolling ? '/images/logo_main_fix.png' : '/images/logo_main_hp.png'
-          }
-          alt='logo'
-          width={scrolling ? '185' : '250'}
-          height={scrolling ? '40' : '50'}
-          isScroll={scrolling}
-        />
+    <Logo
+      src={
+        scrolling ? '/images/shared/menu_fix.png' : '/images/shared/menu.png'
+      }
+      alt='menu icon'
+      width='32'
+      height='22'
+      isScroll={scrolling}
+    />
+    <Logo
+      isLogo
+    src={scrolling ? '/images/logo_main_fix.png' : black ? '/images/logo_main_fix.png' : '/images/logo_main_hp.png'}
+      alt='logo'
+      width={scrolling ? '185' : '250'}
+      height={scrolling ? '40' : '50'}
+      isScroll={scrolling}
+      link='/'
+    />
     <NavHolder>
       {navs.map((link) => (
         <NavLink

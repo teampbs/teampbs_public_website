@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import Image from 'next/image'
@@ -44,6 +44,7 @@ const NavLink: FC<INavLink> = ({ title, links, isEmpty }) => {
       </div>
       {!isEmpty && (
         <div
+          css={{boxShadow: '0px 10px 28px rgb(0 0 0 / 25%)'}}
           className={`dropdown flex flex-col absolute left-0 top-10 rounded-md w-72 p-2.5 bg-white ${
             !isOpen && 'hidden'
           }`}

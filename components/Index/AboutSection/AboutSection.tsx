@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 
 import Card from 'components/Index/AboutSection/Card'
 import { mq } from 'styles/styles'

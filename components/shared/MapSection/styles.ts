@@ -6,13 +6,13 @@ import { colors } from 'utils/constants'
 export const Countries = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  margin: '2.5rem',
+  margin: '25px 0 0 0',
   gap: '1rem',
-  overflowY: 'auto',
   width: 345,
-  height: 256,
+  height: '100%',
   textAlign: 'left',
   fontSize: '1.5rem',
+  overflow: 'hidden',
 })
 
 export const Text = styled.p<{ mt?: boolean, size?: string }>(({ mt, size = '1rem' }) => ({
@@ -26,44 +26,58 @@ export const Heading = styled.h2({
   fontWeight: 700
 })
 
-export const Container = styled.div({
-  color: colors.black00,
-  textAlign: 'center',
-  width: '100%',
-  background: colors.blueMild,
-  padding: '5rem 0',
-})
-
-export const SideBarItem = styled.div({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0.5rem',
-})
-
-export const Arrow = styled.img({
-  width: '.8rem',
-  height: '.8rem',
-  transform: 'rotate(90deg)'
-})
-
-export const Row = styled.div({
-  display: 'flex',
-  height: 'auto',
-  margin: 'auto',
-  width: '80%',
-  padding: '2.5rem',
-})
-
-export const RowMq = mq({
-  flexDirection: ['column-reverse', 'column-reverse', 'column-reverse', 'row'],
-  width: ['100%', '100%', '100%', '80%'],
-  alignItems: ['center', 'center', 'center', 'stretch'],
-})
-
-export const BlueSpan = styled.span({
-  color: colors.lightBlue
-})
-
-export const BoldLink = styled.a({
-  fontWeight: 700
-})
+export const style = {
+  wrapper: {
+    color: colors.black00,
+    textAlign: 'center',
+    width: '100%',
+    background: colors.blueMild,
+    padding: '5rem 0',
+  },
+  sidebar: {
+    container: {
+      display: 'flex',
+      flexDirection: 'column' as const,
+      margin: '25px 0 0 0',
+      gap: '1rem',
+      minWidth: '20%',
+      maxHeight: '700px',
+      textAlign: 'left',
+      fontSize: '1.5rem',
+      overflow: 'auto',
+      '::-webkit-scrollbar': {
+        width: '4px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: colors.gray,
+      },
+      '::-webkit-scrollbar-thumb ': {
+        // background: colors.lightGray,
+        background: 'rgba(36,44,55,0.1)',
+      },
+    },
+    img: {
+      width: '.8rem',
+      height: '.8rem',
+      transform: 'rotate(90deg)',
+    },
+    name: { cursor: 'pointer', color: colors.black10 }
+  },
+  heading: {
+    fontSize: '2.25rem',
+    fontWeight: 700
+  },
+  row: mq({
+    display: 'flex',
+    height: 'auto',
+    margin: 'auto',
+    padding: '2.5rem',
+    flexDirection: ['column-reverse', 'column-reverse', 'column-reverse', 'row'],
+    width: ['100%', '100%', '100%', '80%'],
+    alignItems: ['center', 'center', 'center', 'stretch'],
+  }),
+  link: {
+    color: colors.lightBlue,
+    marginLeft: '.5rem',
+  }
+}

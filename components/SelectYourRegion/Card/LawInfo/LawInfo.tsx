@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import styled from '@emotion/styled'
 
-import Select from 'components/shared/Select'
+import Select from 'components/shared/Inputs/Select'
 import Textarea from 'components/shared/Textarea'
-import Checkbox from 'components/shared/Checkbox'
+import Checkbox from 'components/shared/Inputs/Checkbox'
 import { colors } from 'utils/constants'
 import { degrees } from '../../mocks'
 

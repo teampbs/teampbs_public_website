@@ -1,39 +1,36 @@
-/** @jsxImportSource @emotion/react */
-import React, { FC } from 'react'
+import { FC } from 'react'
+import { Interpolation, Theme } from '@emotion/react'
 
 import MapChart from 'components/shared/MapSection/Map'
-import { usa_provinces } from 'components/shared/MapSection/constants'
-import { Container, Heading, Text, Row, RowMq, Countries, SideBarItem, Arrow, BlueSpan } from 'components/shared/MapSection/styles'
+import {
+  Text,
+  style,
+} from 'components/shared/MapSection/styles'
+import Sidebar from 'components/shared/MapSection/Sidebar'
 
-const MapSection: FC<{ jobs_mode?: boolean }> = ({ jobs_mode }) => (
-  <Container>
-    <Heading>
-      Find a Regional Coordinator in your area:
-    </Heading>
+const MapSection: FC<{ jobs_mode?: boolean; request_form?: boolean }> = (
+  props,
+  { jobs_mode }
+) => (
+  <div css={style.wrapper as Interpolation<Theme>}>
+    <h2 css={style.heading as Interpolation<Theme>}>Find a Regional Coordinator in your area:</h2>
     <Text mt>
       Please click on the area you reside to obtain more information on your
       local team PBS team member(s).
     </Text>
-    <Row css={RowMq}>
-      <Countries>
-        <Text>United States:</Text>
-        {React.Children.toArray(usa_provinces.map((name) => (
-          <SideBarItem>
-            {jobs_mode || <Arrow
-              src='/images/pages/Index/breadcrumb-arrow.png'
-              alt='arrow_down'
-            />}
-            <Text>{name}</Text>
-          </SideBarItem>
-        )))}
-      </Countries>
-      <MapChart jobs_mode={jobs_mode} />
-    </Row>
-    <Text size='0.75rem'>
+    <div css={style.row}>
+      <Sidebar jobs_mode={jobs_mode} />
+      <MapChart {...props} />
+    </div>
+    <Text size='15px'>
       Have a question for team PBS?{' '}
-      <BlueSpan>Get in touch</BlueSpan>
+      <span
+        css={style.link}
+      >
+        Get in touch
+      </span>
     </Text>
-  </Container>
+  </div>
 )
 
 export default MapSection

@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import { FC } from 'react'
 import Link from 'next/link'
 import { Carousel } from 'react-responsive-carousel'

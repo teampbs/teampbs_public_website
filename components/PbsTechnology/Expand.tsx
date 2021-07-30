@@ -1,30 +1,81 @@
-import Image from "next/image"
-import { FC, useState } from "react"
+import { Interpolation, Theme } from '@emotion/react'
+import Image from 'next/image'
+import { FC, useState } from 'react'
+
+import Flexbox from 'components/shared/Flexbox'
+import { colors } from 'utils/constants'
+import { mq } from 'styles/styles'
 
 interface IExpand {
   title: string
 }
 
-const down = '/images/pages/careers/arrow-down.png'
-const up = '/images/pages/careers/arrow-up.png'
+const down = '/images/shared/arrow_down.png'
+const up = '/images/shared/arrow_up.png'
+
+const style = {
+  child: {
+    lineHeight: '1.75rem',
+    margin: '0 2.5rem 2.5rem 0',
+    width: '80%',
+    textAlign: 'left',
+  },
+  innerDiv: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '2.5rem',
+    marginLeft: '1rem',
+  },
+  outerDiv: mq({ 
+    boxShadow: '0px 3px 7px rgb(48 74 90 / 5%)', 
+    cursor: 'pointer',
+    width: ['100%', '100%', '100%', '75%'],
+    margin: '0.75rem 0 0 0',
+  }),
+  title: {
+    backgroundSize: '1.25rem 0.75rem',
+    padding: '0 4rem',
+    fontWeight: 700,
+    fontSize: '1.875rem',
+    textAlign: 'left'
+  },
+  expandedBody: {
+    alignItems: 'flex-start',
+    padding: '0 8rem',
+    marginBottom: '2.5rem',
+  }
+}
 
 const Expand: FC<IExpand> = ({ title, children }) => {
   const [expand, setExpand] = useState(false)
 
   return (
-    <div className='flex flex-col text-left bg-white shadow mt-3 w-3/4'>
-      <div className='flex items-center p-10' onClick={() => setExpand(prevState => !prevState)}>
-        <img
-          src={expand ? up : down}
-          alt='arrow-down'
-          className='h-3 w-5 mx-10'
-        />
-        <h3 className='text-3xl font-bold'>{title}</h3>
+    <Flexbox
+      items=''
+      col
+      background={colors.white}
+      css={style.outerDiv}
+    >
+      <div
+        css={style.innerDiv}
+        onClick={() => setExpand((prevState) => !prevState)}
+      >
+        <h3
+          css={{
+            background: `url(${expand ? up : down}) no-repeat left center`,
+            ...style.title
+          } as Interpolation<Theme>}
+        >
+          {title}
+        </h3>
       </div>
-      <div className={`items-start px-32 ml-3 mb-10 flex ${expand ? 'flex' : 'hidden'}`}>
-        <div className='leading-7 mb-10 mr-10 w-4/5'>
-          {children}
-        </div>
+      <div
+        css={{
+          display: `${expand ? 'flex' : 'none'}`,
+          ...style.expandedBody
+        }}
+      >
+        <div css={style.child as Interpolation<Theme>}>{children}</div>
         <Image
           width='240'
           height='240'
@@ -32,7 +83,7 @@ const Expand: FC<IExpand> = ({ title, children }) => {
           alt='expand_img'
         />
       </div>
-    </div>
+    </Flexbox>
   )
 }
 

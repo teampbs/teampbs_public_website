@@ -2,10 +2,11 @@ import styled from '@emotion/styled'
 
 import Button from 'components/shared/Button'
 import Layout from 'components/Layout/Layout'
-import Card from 'pages/about-team-pbs/Card'
-import Avatar from 'pages/about-team-pbs/Avatar'
-import { employees } from 'utils/mock/employees'
+import Card from 'components/AboutTeamPbs/Card'
+import Avatar from 'components/AboutTeamPbs/Avatar'
 import ServiceSection from 'components/shared/ServiceSection'
+import { employees } from 'utils/mock/employees'
+import Flexbox from 'components/shared/Flexbox'
 
 const image = {
   src: '/images/about_us_banner.png',
@@ -80,34 +81,35 @@ const AboutPage = () => (
         </p>
       </Card>
     </article>
-    <article className='flex justify-center w-3/5 py-10'>
+    <Flexbox width='60%' padding='2.5rem 0'>
       <p className='w-full leading-6 text-left mr-10'>
         Positive Behavior Supports Corporation is currently operating in the
         United States and Canada. Our headquarters in the US is located at 7108
         S Kanner Hwy, Stuart, FL 34997 and Our central office in Canada is
         located at 32 Turtledove Grove, Scarborough, Ontario M1X.
       </p>
-      <div className='flex flex-col gap-1 w-full'>
+      <Flexbox col gap='.25rem' width='100%'>
         {buttons.map(item => (
-          <Button icon>
-            <span className='font-semibold'>
+          <Button icon width='100%'>
+            <span css={{ fontWeight: 600 }}>
               {item}
             </span>
           </Button>
         ))}
-      </div>
-    </article>
-    <section className='flex flex-col items-center w-4/5'>
-      <header className='flex flex-col items-center'>
-        <h3 className='text-4xl font-bold'>Leadership Team</h3>
+      </Flexbox>
+    </Flexbox>
+    <Flexbox col width='80%' margin='4rem 0'>
+      <Flexbox col>
+        <h3 css={{ fontWeight: 700, fontSize: '2.25rem', padding: '0 0 5rem' }}>Leadership Team</h3>
         <Avatar
-          img='/images/avatar.svg'
+          
+          img='/images/profile.png'
           name='Michael Nolan'
           position='Chief Executive Officer'
           description='Michael Nolan Ph.D. is an excellent Board Certified Behavior Analyst and has been the President of Positive Behavior Supports Corp. sinc'
           link='MNolan@teampbs.com'
         />
-      </header>
+      </Flexbox>
       <Article>
         {employees.map(em => (
           <Avatar 
@@ -119,7 +121,7 @@ const AboutPage = () => (
           />
         ))}
       </Article>
-    </section>
+    </Flexbox>
     <ServiceSection />
   </Layout>
 )

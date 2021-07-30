@@ -1,8 +1,8 @@
 import { useState, FC } from 'react'
 
 import { Input, Legend } from 'components/SelectYourRegion/styles'
-import * as CustomInput from 'components/shared/Input'
-import Select from 'components/shared/Select'
+import * as CustomInput from 'components/shared/Inputs/Input'
+import Select from 'components/shared/Inputs/Select'
 import Flexbox from 'components/shared/Flexbox'
 
 const inputs = [

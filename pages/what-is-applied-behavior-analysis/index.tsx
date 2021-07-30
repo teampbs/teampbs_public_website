@@ -3,7 +3,14 @@ import ServiceSection from 'components/shared/ServiceSection'
 import Expand from 'components/PbsTechnology/Expand'
 import { expandCards } from 'components/PbsTechnology/expand_cards'
 import { colors } from 'utils/constants'
-import { Text } from 'styles/styles'
+import { mq, Text } from 'styles/styles'
+import Card_one from 'components/PbsTechnology/Cards/Card_one'
+import Card_two from 'components/PbsTechnology/Cards/Card_two'
+import Card_three from 'components/PbsTechnology/Cards/Card_three'
+import Card_four from 'components/PbsTechnology/Cards/Card_four'
+import Card_five from 'components/PbsTechnology/Cards/Card_five'
+import Card_six from 'components/PbsTechnology/Cards/Card_six'
+import Flexbox from 'components/shared/Flexbox'
 
 const image = {
   src: '/images/pages/PbsTechnology/banner.png',
@@ -29,7 +36,7 @@ const PbsTechnology = () => (
     text={text}
     height='500px'
   >
-    <div className='flex flex-col items-center bg-blue-50 leading-8 text-center py-48'>
+    <Flexbox css={mq({ width: ['', '', '', ''], lineHeight: '2rem', textAlign: 'center', padding: '12rem 1rem', background: colors.blueMild })} col >
       <Text size='1.25rem' width='50%' padding='0 0 2.5rem 0'>
         Positive behavior support is an individualized, research-based process
         that incorporates the principles of applied behavior analysis and person
@@ -47,10 +54,17 @@ const PbsTechnology = () => (
       <Text margin='1.25rem 0 0 0' color={colors.textGray}>
         Learn why this approach is so successful.
       </Text>
-      {expandCards.map(({ title, children }) => (
-        <Expand title={title}>{children}</Expand>
+      {expandCards.map(({ title, id }) => (
+        <Expand title={title}>
+          {id === 1 && <Card_one />}
+          {id === 2 && <Card_two />}
+          {id === 3 && <Card_three />}
+          {id === 4 && <Card_four />}
+          {id === 5 && <Card_five />}
+          {id === 6 && <Card_six />}
+        </Expand>
       ))}
-    </div>
+    </Flexbox>
     <ServiceSection />
   </Layout>
 )

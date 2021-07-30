@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import { FC } from 'react'
 
 import Flexbox from 'components/shared/Flexbox'
@@ -13,7 +13,7 @@ const cards = [
 
 const Process: FC<{ expand: boolean }> = ({ expand }) => (
   <div hidden={expand}>
-    <Flexbox margin='5rem 0 0 0' col padding='3rem 0' background={colors.blueMild}>
+    <Flexbox  margin='5rem 0 0 0' col padding='3rem 0' background={colors.blueMild}>
       <h3 css={{ fontSize: '30px', padding: '0 0 48px 0' }}>
         Overview of our Process
       </h3>

@@ -1,4 +1,4 @@
-// /** @jsxImportSource @emotion/react */
+// 
 // import tw from "twin.macro";
 import Head from 'next/head'
 import 'styles/globals.css'

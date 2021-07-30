@@ -1,8 +1,8 @@
-/** @jsxImportSource @emotion/react */
-
 import HowItWorks from 'components/Index/HowItWorks/HowItWorks'
 import Layout from 'components/Layout/Layout'
+import { Circle, ContainerForm, Info } from 'components/SelectYourRegion/styles'
 import Flexbox from 'components/shared/Flexbox'
+import { FC } from 'react'
 import { colors } from 'utils/constants'
 
 const image = {
@@ -21,14 +21,6 @@ const metaDesc = {
   content:
     'Need our help? Select your region and get in touch with an ABA provider near you. Take advantage of an interactive map on our website!',
 }
-
-// const style = {
-//   processTitle: {
-//     color: colors.white,
-//     fontSize: 35,
-//     marginTop: '8rem',
-//   },
-// }
 
 const cards = [
   {
@@ -61,7 +53,63 @@ const cards = [
   },
 ]
 
-const RequestAbaServices = () => (
+const style = {
+  card: {
+    outer: { background: '#FFF', width: '60%' },
+    wrapper: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: '5rem',
+      background: '#FFF',
+      padding: '50px 65px 0',
+      position: 'relative' as 'relative',
+      top: -65,
+      height: '100%',
+    },
+    title: { fontSize: '19px', paddingBottom: '28px' },
+    list: {
+      background: `url('images/pages/RequestAbaServices/list_bullet_icon.png') 10px no-repeat`,
+      backgroundPosition: '0px 10px',
+      padding: '0 0 48px 40px',
+    },
+    list_span: { fontWeight: 700 },
+    subtext: { fontSize: 16 },
+    footer: { fontSize: 15, borderTop: 'solid 1px #f2f7fb' },
+    footer_text: { color: 'rgba(36,44,55,0.65)', paddingLeft: 36 },
+  },
+}
+
+const Card: FC<{ num: number; title: string }> = ({ num, title, children }) => (
+  <Flexbox col css={style.card.outer}>
+    <div css={style.card.wrapper}>
+      <Circle>{num}</Circle>
+      <Info>
+        <h3 className='font-bold text-2xl pb-3'>{title}</h3>
+      </Info>
+      <ContainerForm css={{ padding: 0 }}>{children}</ContainerForm>
+    </div>
+    {num === 3 && (
+      <Flexbox
+        css={style.card.footer}
+        padding='35px 74px 38px'
+        margin='43x 0 0'
+      >
+        <img
+          src='images/pages/RequestAbaServices/privacy_icon.png'
+          alt='privacy icon'
+        />
+        <p css={style.card.footer_text}>
+          All confidential information is maintained on a highly secure server
+          owned and managed directly by Team PBS. Our website is secured by
+          256-bit encryption and our company and domain has been validated by a
+          trusted third party.
+        </p>
+      </Flexbox>
+    )}
+  </Flexbox>
+)
+
+const RequestAbaServices: FC = () => (
   <Layout
     title='Request ABA Services | PBS Corporation'
     meta={metaDesc}
@@ -69,16 +117,91 @@ const RequestAbaServices = () => (
     text={text}
     height='500px'
   >
-    <Flexbox col background={colors.blueMild} height='1444px'></Flexbox>
+    <Flexbox padding='0 0 5rem 0' gap='6rem' col background={colors.blueMild}>
+      <Card num={1} title='What can ABA therapy do for your loved one?'>
+        <Flexbox col>
+          <p css={style.card.title}>
+            PBS Corp serves children and adults with behavioral challenges.
+            Typically, we support individuals who require assistance in:
+          </p>
+          <ul>
+            <li css={style.card.list}>
+              <span css={style.card.list_span}>
+                developing or enhancing language skills
+              </span>
+              to more effectively communicate their needs and functional skills
+              (e.g., daily living, self-regulation) that will lead to greater
+              independence
+            </li>
+            <li css={style.card.list}>
+              <span css={style.card.list_span}>
+                diminishing problem behaviors
+              </span>
+              such as aggression, self-injury, elopement, tantrumming, and
+              property destruction that limit their ability to develop skills
+              and participate fully in integrated settings
+            </li>
+          </ul>
+        </Flexbox>
+      </Card>
+      <Card
+        num={2}
+        title='Does my funding source provide coverage for ABA services?'
+      >
+        <Flexbox col>
+          <p css={style.card.title}>
+            Offering ABA services with over 250 private insurance companies and
+            state-funded policies as well as grants and scholarships. If your
+            funding source does offer ABA services and PBS Corp. is not
+            in-network, PBS Corp. can work to gain a single case agreement for
+            ABA therapy.
+          </p>
+        </Flexbox>
+      </Card>
+      <Card num={3} title='What documents are required?'>
+        <Flexbox col>
+          <p css={style.card.title}>
+            In order to check benefits and obtain authorization, we will need to
+            collect the following info / documents:
+          </p>
+          <ul>
+            <li css={style.card.list}>
+              <span css={style.card.list_span}>
+                basic demographic information
+              </span>
+              for the parent/caregiver and individual who will receive the
+              services.
+            </li>
+            <li css={style.card.list}>
+              In addition, you will have the opportunity to upload
+              <span css={style.card.list_span}>
+                pictures of your insurance card
+              </span>
+              (front and back).
+            </li>
+            <li css={style.card.list}>
+              any diagnostic reports verifying a qualifying diagnosis.
+            </li>
+          </ul>
+          <p css={style.card.subtext}>
+            Our clinical team will then work to evaluate the referral and obtain
+            an authorization for services based on the individual’s current
+            benefits. Our team will respond within two business days of being
+            contacted to provide a status update.
+          </p>
+        </Flexbox>
+      </Card>
+    </Flexbox>
     <Flexbox
       col
-      background={colors.darkBlue}
       height='900px'
       justify='flex-start'
+      background={colors.darkBlue}
+      padding='0 3rem 3rem'
+      gap='.5rem'
+      items='flex-start'
     >
-      <Flexbox padding='0 3rem 3rem' gap='.5rem' items='flex-start'>
-        <HowItWorks list={cards} dark />
-      </Flexbox>
+      <HowItWorks list={cards} dark />
     </Flexbox>
   </Layout>
 )

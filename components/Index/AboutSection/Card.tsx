@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import Image from 'next/image'
 
 import { Box, BoxMq, Frame, AboutTitle } from 'components/Index/styles'

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import Input from 'components/shared/Input'
+import Input from 'components/shared/Inputs/Input'
 import { Button, Wrapper } from 'components/SelectYourRegion/styles'
 import Flexbox from 'components/shared/Flexbox'
 import { refInputs } from 'components/SelectYourRegion/mocks'

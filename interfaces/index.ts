@@ -121,85 +121,79 @@ export interface IFlex {
 }
 
 export interface IJobApplication {
-  appInfo: {
-    firstName: string
-    MI?: string
-    lastName: string
-    qualification?: string
-    analystType?: string
-    bacb_number?: number
-    license?: string
-    date_birth: Date
-    date_app: Date
-    street: string
-    unit?: string
-    city: string
-    state: string,
-    county: string
-    phone: number
-    email: string
-    available: Date
-  },
-  table: {
-    available_time: Date[] // ['06:30 - 07:00', '16:30 - 17:00', '16:00 - 16:30'...]
+    appInfo: {
+      firstName: string
+      MI: string
+      lastName: string
+      qualification: string
+      analystType: string
+      bacb_number: number
+      license: string
+      date_birth: Date
+      date_app: Date
+      street: string
+      unit: string
+      city: string
+      county: string
+      phone: number
+      email: string
+      available: Date
+    },
+    table: {
+      available_time: boolean[]
+    }
+    lawInfo: {
+      en: boolean
+      es: boolean
+      citizenship: boolean
+      felony: boolean
+      felony_explain: string
+      description: string
+      hear: string
+      degrees: string
+      coursework: string
+      npi_number: string
+      enum_date: Date
+      taxonomy: string
+    }
+    education: {
+      school: string
+      city: string
+      state: string
+      from: string
+      to: string
+      graduated: string
+      degree: string
+    }
+    references: {
+      name: string
+      relationship: string
+      company: string
+      phone: number
+      address: string
+    }
+    employment: {
+      company: string
+      phone: number
+      address: string
+      supervisor: string
+      job: string
+      from: string
+      to: string
+      reason: string
+      reference: string
+    }
+    resume: {
+      your_resume: null
+    }
+    otherInfo: {
+      age: number
+      full_time: null
+      hours: number
+      apply: string
+      employed: string
+      positions: string
+      skills: string
+    }
   }
-  lawInfo: {
-    en?: boolean
-    es?: boolean
-    citizenship?: boolean
-    felony?: boolean
-    felony_explain?: string
-    description?: string
-    hear: string
-    degrees: string
-    name_university?: string
-    graduation_date?: Date
-    npi_number: string
-    enum_date: Date
-    taxonomy: string
-  }
-  education: {
-    school?: string
-    city?: string
-    state?: string
-    from?: string
-    to?: string
-    graduated?: string
-    degree?: string
-  }
-  references: {
-    name?: string
-    relationship?: string
-    company?: string
-    phone?: number
-    address?: string
-  }
-  employment: {
-    company?: string
-    phone?: number
-    address?: string
-    supervisor?: string
-    job?: string
-    from?: string
-    to?: string
-    reason?: string
-    reference?: string
-  }
-  resume: {
-    your_resume?: null // uploaded file
-  }
-  otherInfo: {
-    age?: boolean
-    full_time?: boolean
-    hours: number
-    applied_when?: string
-    applied_job?: string
-    employed_when?: string
-    employed?: string
-    positions?: string
-    skills: string
-  }
-  authorization: {
-    signature: string // image file
-  }
-}
+  

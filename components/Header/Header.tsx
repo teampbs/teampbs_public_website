@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import { FC } from 'react'
 import Image from 'next/image'
 
@@ -45,7 +45,7 @@ const Header: FC<IHeader> = ({
       </Box>
     )}
     <TopNav />
-    <StickyNav scrolling={scrolling} />
+    <StickyNav scrolling={scrolling} black={black} />
     <TitleSection
       moreInfo={moreInfo}
       title={text?.title}

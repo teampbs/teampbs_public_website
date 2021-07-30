@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import Input from 'components/shared/Input'
-import Checkbox from 'components/shared/Checkbox'
+import Input from 'components/shared/Inputs/Input'
+import Checkbox from 'components/shared/Inputs/Checkbox'
 import Flexbox from 'components/shared/Flexbox'
 import { Empty } from 'components/SelectYourRegion/styles'
 

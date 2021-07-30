@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import Image from 'next/image'
 
 import { Counter, Card, Subtitle, P } from 'components/Index/styles'

@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -11,7 +11,6 @@ import {
   OuterFlexDetailsMq,
 } from 'styles/pages/latest-news.style'
 import Button from 'components/shared/Button'
-// import { employees } from 'utils/mock/employees'
 
 const image = {
   src: '/images/pages/selectYourRegion/banner.png',
@@ -31,7 +30,6 @@ const metaDesc = {
 const NewsDetails = () => {
   const router = useRouter()
   const { name } = router.query
-  // const getEmployeeByName = employees.find((n) => n.name === name)
 
   return (
     <Layout
@@ -69,24 +67,17 @@ const NewsDetails = () => {
             background={colors.white}
           >
             <Flexbox justify='center' gap='.5rem' col margin='35px 0'>
-              <div
+              <img
                 css={{
-                  position: 'relative',
+                  borderRadius: '50%',
                   width: '160px',
                   height: '160px',
-                  marginTop: '-10rem',
+                  position: 'absolute',
+                  bottom: 220,
                 }}
-              >
-                <img
-                  css={{
-                    borderRadius: '50%',
-                    width: '100%',
-                    height: '100%',
-                  }}
-                  src='/images/about_us_banner.png'
-                  alt='picture'
-                />
-              </div>
+                src='/images/about_us_banner.png'
+                alt='picture'
+              />
               <h2
                 css={{ padding: '25px 0', fontSize: 32, color: colors.black10 }}
               >
@@ -102,7 +93,7 @@ const NewsDetails = () => {
                 </p>
               </Flexbox>
               <Button inverse>+1-23123-2131-2313123</Button>
-              <Button>MNolan@teampbs.com</Button>
+              <Button><a href="mailto:MNolan@teampbs.com">MNolan@teampbs.com</a></Button>
             </Flexbox>
             <p css={style.description}>
               Michael Nolan Ph.D. is an excellent Board Certified Behavior

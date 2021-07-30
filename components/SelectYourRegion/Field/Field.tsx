@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { FormGroup, Input, Label } from 'components/SelectYourRegion/styles'
 import Qualification from 'components/SelectYourRegion/Field/Qualification'
-import Select from 'components/shared/Select'
+import Select from 'components/shared/Inputs/Select'
 import useForm from 'Hooks/useForm'
 import { IField } from 'interfaces'
 

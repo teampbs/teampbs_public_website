@@ -37,7 +37,8 @@ export const offsets = {
 }
 
 export interface ICountry {
-  jobs_mode: boolean
+  jobs_mode?: boolean
+  request_form?: boolean
   geoUrl: any
 }
 

@@ -34,4 +34,8 @@ export const styles = css`
   a {
     text-decoration: none;
   }
+
+  // * {
+  //   border: 1px solid red;
+  // }
 `;

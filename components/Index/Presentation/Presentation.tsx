@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import ReactPlayer from 'react-player/lazy'
 
 import Button from 'components/shared/Button'

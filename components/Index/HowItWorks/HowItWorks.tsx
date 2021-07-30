@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import { MediaCard } from 'components/Index/HowItWorks/MediaCard'
 import {
   CardBox,
@@ -8,6 +6,7 @@ import {
   SectionBoxMq,
 } from 'components/Index/styles'
 import Button from 'components/shared/Button'
+import Link from 'next/link'
 import { FC } from 'react'
 import { colors } from 'utils/constants'
 
@@ -17,7 +16,7 @@ const darkStyle = {
   marginTop: '8rem',
 }
 
-const HowItWorks: FC<{ dark?: boolean, list: any }> = ({ dark, list }) => (
+const HowItWorks: FC<{ dark?: boolean; list: any }> = ({ dark, list }) => (
   <SectionBox css={SectionBoxMq}>
     <Title css={dark && darkStyle}>
       {dark ? 'The approval process' : 'How it works'}
@@ -27,9 +26,19 @@ const HowItWorks: FC<{ dark?: boolean, list: any }> = ({ dark, list }) => (
         <MediaCard dark={dark} key={index} {...item} />
       ))}
     </CardBox>
-    <Button height={dark && '70px'} width={dark ? '336px' : '265px'} icon>
-      {dark ? 'Submit Service Request' : 'Explore our services'}
-    </Button>
+    {dark ? (
+      <Link href='/request-aba-services/request-region'>
+        <a>
+          <Button height='70px' width='336px' icon>
+            Submit Service Request
+          </Button>
+        </a>
+      </Link>
+    ) : (
+      <Button width='265px' icon>
+        Request ABA Therapy
+      </Button>
+    )}
   </SectionBox>
 )
 

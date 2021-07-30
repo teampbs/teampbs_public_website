@@ -1,9 +1,8 @@
-/** @jsxImportSource @emotion/react */
+
 import { FC } from 'react'
 
 import { IExpand } from 'interfaces'
 import { mq } from 'styles/styles'
-
 
 const box_position = mq({
   width: ['100%', '100%', '100%', '400px'],

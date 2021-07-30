@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { colors } from 'utils/constants'
 import { marked } from 'components/shared/MapSection/constants'
-import { BoldLink } from 'components/shared/MapSection/styles'
+import ReactTooltip from 'react-tooltip'
 
 const style_link_graph = {
   default: {
@@ -50,7 +50,11 @@ const style_default = {
   },
 }
 
-const Shape: FC<{ geo: any; jobs_mode: boolean }> = ({ geo, jobs_mode }) => {
+const Shape: FC<{ geo: any; jobs_mode: boolean; request_form?: boolean }> = ({
+  geo,
+  jobs_mode,
+  request_form,
+}) => {
   const { name } = geo.properties
 
   return (
@@ -59,33 +63,49 @@ const Shape: FC<{ geo: any; jobs_mode: boolean }> = ({ geo, jobs_mode }) => {
         <Link
           href={
             jobs_mode
-              ? `job-application/${name.toLowerCase()}`
+              ? request_form
+                ? `/request-aba-services/request-region/${name.toLowerCase()}`
+                : `job-application/${name.toLowerCase()}`
               : `/contact/region/${name}`
           }
         >
-          <BoldLink>
+          <a
+            css={{
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
+          >
             <Geography
+              data-for='country_name'
+              data-tip={name}
+              data-iscapture="true"
               key={geo.rsmKey}
               stroke={colors.blueMild}
               geography={geo}
               fill='#FFF'
-              style={
-                marked.includes(name)
-                  ? style_link_graph
-                  : style_jobs_mode
-              }
+              style={marked.includes(name) ? style_link_graph : style_jobs_mode}
             />
-          </BoldLink>
+            <ReactTooltip
+              id='country_name'
+              place='top'
+              type='light'
+              effect='float'
+              multiline={true}
+            />
+          </a>
         </Link>
       ) : marked.includes(name) ? (
         <Link
           href={
-            jobs_mode
-              ? `job-application/${name}`
-              : `/contact/region/${name}`
+            jobs_mode ? `job-application/${name}` : `/contact/region/${name}`
           }
         >
-          <BoldLink>
+          <a
+            css={{
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
+          >
             <Geography
               key={geo.rsmKey}
               stroke={colors.blueMild}
@@ -93,7 +113,7 @@ const Shape: FC<{ geo: any; jobs_mode: boolean }> = ({ geo, jobs_mode }) => {
               fill='#FFF'
               style={style_link_graph}
             />
-          </BoldLink>
+          </a>
         </Link>
       ) : (
         <Geography
@@ -107,6 +127,5 @@ const Shape: FC<{ geo: any; jobs_mode: boolean }> = ({ geo, jobs_mode }) => {
     </>
   )
 }
-
 
 export default Shape

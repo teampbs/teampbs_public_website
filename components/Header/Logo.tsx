@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import { FC } from 'react'
 import Image from 'next/image'
 
@@ -27,15 +27,7 @@ const menuStyle = {
   margin: ['0 auto 0 0', '0 auto 0 0', '0 auto 0 0', '0 auto 0 auto'],
 }
 
-const Logo: FC<ILogo> = ({
-  src,
-  alt,
-  width,
-  height,
-  isLogo,
-  isScroll,
-  link,
-}) => (
+const Logo: FC<ILogo> = ({ src, alt, width, height, isLogo, isScroll, link }) => (
   <Frame css={mq(isLogo ? (isScroll ? logoStyleFix : logoStyle) : menuStyle)}>
     {link ? (
       <Link href={link}>

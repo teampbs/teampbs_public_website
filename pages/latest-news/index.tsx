@@ -1,4 +1,4 @@
-/** @jsxImportSource @emotion/react */
+
 import Link from 'next/link'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
