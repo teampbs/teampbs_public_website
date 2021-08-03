@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ComposableMap } from 'react-simple-maps'
+import { ComposableMap,  } from 'react-simple-maps'
 
 import canada_json from 'components/shared/MapSection/usa_provinces.json'
 import usa_json from 'components/shared/MapSection/usa_geojson.json'
@@ -10,6 +10,7 @@ const Map: FC<{ jobs_mode?: boolean, request_form?: boolean }> = ({ jobs_mode, r
   return (
     <ComposableMap
       projection='geoAlbers'
+      data-tip=""
       projectionConfig={{ scale: 500 }}
       style={{
         width: '100vw',

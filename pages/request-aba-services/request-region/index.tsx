@@ -1,7 +1,7 @@
 import { FC } from 'react'
+import dynamic from 'next/dynamic'
 
 import Layout from 'components/Layout/Layout'
-import MapSection from 'components/shared/MapSection/MapSection'
 
 const image = {
   src: '/images/pages/RequestAbaServices/req_services_banner.png',
@@ -19,6 +19,8 @@ const metaDesc = {
   content:
     'Need our help? Select your region and get in touch with an ABA provider near you. Take advantage of an interactive map on our website!',
 }
+
+const MapSection = dynamic(() => import('components/shared/MapSection/MapSection'))
 
 const RequestRegion: FC = () => (
   <Layout

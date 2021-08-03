@@ -1,29 +1,20 @@
 import { FC } from 'react'
-import styled from '@emotion/styled'
 import Link from 'next/link'
 
 import Button from 'components/shared/Button'
 import Logo from 'components/Header/Logo'
 import { navs } from 'components/Header/StickyNav/nav_mocks'
 import NavLink from 'components/Header/StickyNav/NavLink'
-
-const stickyStyles = ' bg-white text-black00 py-10 w-full fixed z-50 transition'
+import { style } from 'components/Header/styles'
 
 interface IStickyNav {
   scrolling: boolean
   black?: boolean
 }
 
-const NavHolder = styled.div({
-  display: 'flex',
-  margin: ' 0 auto 0 -2rem',
-})
-
 const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => (
   <div
-    className={`flex justify-center items-center relative ${
-      scrolling ? 'top-0' : 'top-12'
-    } px-12 h-8 ${scrolling && stickyStyles}`}
+    css={scrolling ? style.fixed : style.navTrack}
   >
     <Logo
       src={
@@ -36,14 +27,20 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => (
     />
     <Logo
       isLogo
-    src={scrolling ? '/images/logo_main_fix.png' : black ? '/images/logo_main_fix.png' : '/images/logo_main_hp.png'}
+      src={
+        scrolling
+          ? '/images/logo_main_fix.png'
+          : black
+          ? '/images/logo_main_fix.png'
+          : '/images/logo_main_hp.png'
+      }
       alt='logo'
       width={scrolling ? '185' : '250'}
       height={scrolling ? '40' : '50'}
       isScroll={scrolling}
       link='/'
     />
-    <NavHolder>
+    <div css={style.navBox}>
       {navs.map((link) => (
         <NavLink
           key={link.id}
@@ -52,7 +49,7 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => (
           isEmpty={link.isEmpty}
         />
       ))}
-    </NavHolder>
+    </div>
     <Link href='/request-aba-services'>
       <a>
         <Button isScroll={scrolling} navBtn>

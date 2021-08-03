@@ -1,5 +1,3 @@
-
-
 import Layout from 'components/Layout/Layout'
 import References from 'components/SelectYourRegion/Card/References/References'
 import Resume from 'components/SelectYourRegion/Card/Resume/Resume'
@@ -22,6 +20,7 @@ import Select from 'components/shared/Inputs/Select'
 import { colors } from 'utils/constants'
 import { appointments, week_days } from 'components/SelectYourRegion/mocks'
 import Checkbox from 'components/shared/Inputs/Checkbox'
+import { CSSObject } from '@emotion/react'
 
 const image = {
   src: '/images/pages/RequestAbaServices/req_services_banner.png',
@@ -68,12 +67,23 @@ const counties = [
   'lorem',
   'lorem',
 ]
-const status = [
-  'Single',
-  'Married',
-  'Divorced',
-]
+const status = ['Single', 'Married', 'Divorced']
 
+const style: CSSObject = {
+  card: {
+    borderRadius: 5,
+    display: 'flex',
+    background: colors.white,
+    justifyContent: 'space-between',
+    position: 'relative',
+    padding: '2.5rem',
+    marginBottom: '.5rem',
+  },
+  btnWrap: {
+    height: '76px',
+    '& button': { height: '100%', fontSize: '18px' },
+  }
+}
 const RequestAbaServices = () => (
   <Layout
     title='Request Team PBS Services | PBS Corporation'
@@ -83,7 +93,7 @@ const RequestAbaServices = () => (
     height='500px'
   >
     <Flexbox padding='5rem 0' col background={colors.blueMild}>
-      <div className={`flex bg-white justify-between w-3/5 relative p-10 mb-2`}>
+      <div css={style.card}>
         <Circle>1</Circle>
         <Info>
           <h3 className='font-bold text-2xl pb-3'>Client Information</h3>
@@ -106,7 +116,9 @@ const RequestAbaServices = () => (
           </Flexbox>
         </ContainerForm>
       </div>
-      <div className={`flex flex-col bg-white justify-between w-3/5 relative p-10 mb-2`}>
+      <div
+        className={`flex flex-col bg-white justify-between w-3/5 relative p-10 mb-2`}
+      >
         <Circle>2</Circle>
         <Info>
           <h3 className='font-bold text-2xl pb-3'>
@@ -114,7 +126,12 @@ const RequestAbaServices = () => (
           </h3>
           <Text>Parent details</Text>
         </Info>
-        <ContainerForm>
+        <form
+          css={{
+            paddingRight: 100,
+            width: '100%',
+          }}
+        >
           <Flexbox col gap='0.5rem' items='flex-center'>
             <Input label='Email' id='email' />
             <Input label='First Name' id='first_name' />
@@ -218,10 +235,12 @@ const RequestAbaServices = () => (
               </Flexbox>
             </Flexbox>
             <div css={{ width: 420, margin: '1rem 0 1rem auto' }}>
-              <Button width='100%' inverse>+ Add Parent/Caregiver</Button>
+              <Button width='100%' inverse>
+                + Add Parent/Caregiver
+              </Button>
             </div>
           </Flexbox>
-        </ContainerForm>
+        </form>
 
         {/* <Info>
           <h3 className='font-bold text-2xl pb-3'>
@@ -301,49 +320,52 @@ const RequestAbaServices = () => (
           <Text>What days and times would work best for you?</Text>
         </Info>
         <ContainerForm>
-        <Flexbox col padding='2.5rem 0 0 0'>    
-        <Article className='flex justify-between items-center gap-4 p-2'>
+          <Flexbox col padding='2.5rem 0 0 0'>
+            <Article className='flex justify-between items-center gap-4 p-2'>
               <p css={{ color: colors.darkGray }} className='text-sm'>
-                Click to select date & time. Click & drag to select multiple dates &
-                times. Click day to select all times available.
+                Click to select date & time. Click & drag to select multiple
+                dates & times. Click day to select all times available.
               </p>
               <div className='flex gap-2'>
                 <ButtonStyle gray>Check all</ButtonStyle>
                 <ButtonStyle gray>Clear</ButtonStyle>
               </div>
-            </Article>      
-          <TableGrid css={{  }}>
-            <thead>
-              <tr className='flex border'>
-                {week_days.map((day) => (
-                  <td className='ml-4 font-bold w-full'>{day}</td>
-                ))}
-              </tr>
-            </thead>
-            <Tbody>
-              {appointments.map((item) => (
-                <Row>
-                  <Td>{item}</Td>
-                  <Td />
-                  <Td />
-                  <Td />
-                  <Td />
-                  <Td />
-                  <Td />
-                  <Td />
-                </Row>
-              ))}
-            </Tbody>
-            <Article css={{ minWidth: '50vw' }} className='flex justify-between items-center gap-4 p-2'>
-              <p className='text-sm'>
-                Tutorial: <br />
-                Click once to select/unselect box. <br />
-                Click and drag to select more box at once. <br />
-                Click day to select all times available <br />
-              </p>
             </Article>
-          </TableGrid>
-        </Flexbox>
+            <TableGrid css={{}}>
+              <thead>
+                <tr className='flex border'>
+                  {week_days.map((day) => (
+                    <td className='ml-4 font-bold w-full'>{day}</td>
+                  ))}
+                </tr>
+              </thead>
+              <Tbody>
+                {appointments.map((item) => (
+                  <Row>
+                    <Td>{item}</Td>
+                    <Td />
+                    <Td />
+                    <Td />
+                    <Td />
+                    <Td />
+                    <Td />
+                    <Td />
+                  </Row>
+                ))}
+              </Tbody>
+              <Article
+                css={{ minWidth: '50vw' }}
+                className='flex justify-between items-center gap-4 p-2'
+              >
+                <p className='text-sm'>
+                  Tutorial: <br />
+                  Click once to select/unselect box. <br />
+                  Click and drag to select more box at once. <br />
+                  Click day to select all times available <br />
+                </p>
+              </Article>
+            </TableGrid>
+          </Flexbox>
         </ContainerForm>
       </div>
       <div className={`flex bg-white justify-between w-3/5 relative p-10 mb-2`}>
@@ -379,7 +401,9 @@ const RequestAbaServices = () => (
           <References />
         </ContainerForm>
       </div>
-      <div css={{ height: '76px', '& button': { height: '100%', fontSize: '18px' } }}>
+      <div
+        css={style.btnWrap}
+      >
         <Button type='submit'>Submit Service Request Application</Button>
       </div>
     </Flexbox>

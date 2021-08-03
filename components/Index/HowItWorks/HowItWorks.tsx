@@ -30,7 +30,9 @@ const HowItWorks: FC<{ dark?: boolean; list: any }> = ({ dark, list }) => (
       <Link href='/request-aba-services/request-region'>
         <a>
           <Button height='70px' width='336px' icon>
-            Submit Service Request
+            <p css={{ fontSize: 18, margin: 'auto' }}>
+              Submit Service Request
+            </p>
           </Button>
         </a>
       </Link>

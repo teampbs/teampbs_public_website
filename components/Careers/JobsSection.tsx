@@ -1,18 +1,7 @@
-import { Theme } from '@emotion/react'
-import styled, { Interpolation } from '@emotion/styled'
-
 import Expand from 'components/Careers/Expand'
 import { QuoteSlider } from 'components/Careers/Slider'
-import { colors } from 'utils/constants'
-import Journeys from './Journeys'
-
-const Article = styled.section({
-  maxWidth: 650,
-})
-
-const Section = styled.section({
-  background: colors.blueMild,
-})
+import Journeys from 'components/Careers/Journeys'
+import { style } from 'components/Careers/style'
 
 const jobs = [
   {
@@ -36,28 +25,10 @@ const jobs = [
 ]
 
 export const JobsSection = () => (
-  <Section className='flex justify-center bg-dark-blue m-auto p-20 w-full'>
-    <Article className='mr-10'>
-      <h3
-        css={
-          {
-            fontWeight: 700,
-            fontSize: '2.25rem',
-          } as Interpolation<Theme>
-        }
-      >
-        Open positions
-      </h3>
-      <p
-        css={{
-          display: 'flex',
-          marginBottom: '40px',
-          background: `url(/images/pages/careers/open-positions-icon.png) no-repeat left center`,
-          backgroundSize: '60px 50px',
-          padding: '2rem 0 0 6rem',
-          color: colors.textGray,
-        }}
-      >
+  <section css={style.section}>
+    <article css={style.article}>
+      <h3 css={style.title}>Open positions</h3>
+      <p css={style.text}>
         PBS is an equal opportunity workplace. Employment selection and related
         decisions are made without regard to sex, race, age, disability,
         religion, national origin, color or any other protected class.
@@ -65,8 +36,8 @@ export const JobsSection = () => (
       {jobs.map((job) => (
         <Expand {...job} />
       ))}
-    </Article>
-    <Article>
+    </article>
+    <article css={style.article}>
       <div className='py-3'>
         <h3 className='text-3xl font-bold pb-10'>Why Team PBS?</h3>
         <p className='pb-16'>
@@ -82,6 +53,6 @@ export const JobsSection = () => (
       </div>
       <QuoteSlider />
       <Journeys />
-    </Article>
-  </Section>
+    </article>
+  </section>
 )

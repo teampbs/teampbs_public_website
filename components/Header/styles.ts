@@ -1,3 +1,4 @@
+import { CSSObject } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { mq } from 'styles/styles'
@@ -91,3 +92,36 @@ export const Disclaimer = styled.p<{ fs?: string; mw?: string; m?: string }>(
     margin: m,
   })
 )
+
+export const style: CSSObject = {
+  navBox: {
+    display: 'flex',
+    margin: ' 0 auto 0 -2rem',
+  },
+  fixed: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '2rem',
+    background: colors.white,
+    color: colors.black00,
+    padding: '2.5rem 3rem',
+    width: '100%',
+    position: 'fixed',
+    zIndex: 50,
+    transitionProperty: `background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)`,
+    transitionDuration: '150ms',
+    boxShadow: '0px 7px 12px rgb(100 100 100 / 10%)',
+    top: 0,
+  },
+  navTrack: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    top: '3rem',
+    padding: '0 3rem',
+    height: '2rem',
+  }
+}

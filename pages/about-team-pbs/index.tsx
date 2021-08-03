@@ -1,5 +1,3 @@
-import styled from '@emotion/styled'
-
 import Button from 'components/shared/Button'
 import Layout from 'components/Layout/Layout'
 import Card from 'components/AboutTeamPbs/Card'
@@ -18,24 +16,25 @@ const text = {
   description: 'Improving Quality of Life Outcomes',
 }
 
-const Article = styled.article({
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-})
-
 const buttons = [
-  'Locate your regional coordinator', 
+  'Locate your regional coordinator',
   'View our service providers',
 ]
 
 const metaDesc = {
   name: 'description',
-  content: 'Who are we? PBS Corporation is committed to producing outcomes that improve an individual’s skills and quality of life. Learn more about our work!'
+  content:
+    'Who are we? PBS Corporation is committed to producing outcomes that improve an individual’s skills and quality of life. Learn more about our work!',
 }
 
 const AboutPage = () => (
-  <Layout title='About Us | PBS Corporation' meta={metaDesc} image={image} text={text} height='500px'>
+  <Layout
+    title='About Us | PBS Corporation'
+    meta={metaDesc}
+    image={image}
+    text={text}
+    height='500px'
+  >
     <p className='text-center text-xl w-3/5 py-10 leading-7'>
       We use the principles of Applied Behavior Analysis to conduct quality
       assessments and behavioral intervention plans. PBS is committed to
@@ -89,20 +88,19 @@ const AboutPage = () => (
         located at 32 Turtledove Grove, Scarborough, Ontario M1X.
       </p>
       <Flexbox col gap='.25rem' width='100%'>
-        {buttons.map(item => (
+        {buttons.map((item) => (
           <Button icon width='100%'>
-            <span css={{ fontWeight: 600 }}>
-              {item}
-            </span>
+            <span css={{ fontWeight: 600 }}>{item}</span>
           </Button>
         ))}
       </Flexbox>
     </Flexbox>
     <Flexbox col width='80%' margin='4rem 0'>
       <Flexbox col>
-        <h3 css={{ fontWeight: 700, fontSize: '2.25rem', padding: '0 0 5rem' }}>Leadership Team</h3>
+        <h3 css={{ fontWeight: 700, fontSize: '2.25rem', padding: '0 0 5rem' }}>
+          Leadership Team
+        </h3>
         <Avatar
-          
           img='/images/profile.png'
           name='Michael Nolan'
           position='Chief Executive Officer'
@@ -110,9 +108,16 @@ const AboutPage = () => (
           link='MNolan@teampbs.com'
         />
       </Flexbox>
-      <Article>
-        {employees.map(em => (
-          <Avatar 
+      <article
+        css={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
+        {employees.map((em) => (
+          <Avatar
+            key={em.name}
             img={em.img}
             name={em.name}
             position={em.position}
@@ -120,7 +125,7 @@ const AboutPage = () => (
             link={em.link}
           />
         ))}
-      </Article>
+      </article>
     </Flexbox>
     <ServiceSection />
   </Layout>

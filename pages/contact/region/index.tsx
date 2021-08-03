@@ -1,10 +1,12 @@
-import MapSection from 'components/shared/MapSection/MapSection'
+import dynamic from 'next/dynamic'
+
 import Layout from 'components/Layout/Layout'
+import { colors } from 'utils/constants'
 
 const text = {
-  title: 'Contact PBS Corporation',
-  subtitle: 'Learn more about PBS and ABA',
-  description: 'We have large number of behavior analysts including doctoral level (BCBA-D), master\'s level (BCBA) and bachelor\'s level (BCaBA). On a limited basis, in some areas, we also offer licensed mental health counselors, speech and language and occupational therapist services.'
+  title: '',
+  subtitle: '',
+  description: ''
 }
 
 const metaDesc = {
@@ -13,15 +15,18 @@ const metaDesc = {
     'Looking for a Board Certified Behavior Analyst in your area? Get in touch with your local Applied Behavior Analysis therapist and request therapy today.',
 }
 
+const MapSection = dynamic(() => import('components/shared/MapSection/MapSection'))
+
 const Region = () => (
   <Layout
     black
+    bg={colors.blueMild}
     meta={metaDesc}
     title='Contact Us | PBS Corporation'
     text={text}
-    height='500px'
+    height='200px'
   >
-    <MapSection />
+    <MapSection isContact />
   </Layout>
 )
 

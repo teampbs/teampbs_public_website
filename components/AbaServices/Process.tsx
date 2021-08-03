@@ -1,8 +1,9 @@
 
 import { FC } from 'react'
+import { Interpolation, Theme } from '@emotion/react'
 
 import Flexbox from 'components/shared/Flexbox'
-import { colors } from 'utils/constants'
+import { style } from 'components/AbaServices/style'
 
 const cards = [
   { title: 'Assessment', li_1: 'Work collaboratively with stakeholders to identify goals and the individuals’ behaviors of concern', li_2: 'Complete record reviews and interviews with caregivers', li_3: 'Conduct observations across activities and settings' },
@@ -13,23 +14,15 @@ const cards = [
 
 const Process: FC<{ expand: boolean }> = ({ expand }) => (
   <div hidden={expand}>
-    <Flexbox  margin='5rem 0 0 0' col padding='3rem 0' background={colors.blueMild}>
-      <h3 css={{ fontSize: '30px', padding: '0 0 48px 0' }}>
+    <Flexbox css={style.process.wrapper} col>
+      <h3 css={style.process.title}>
         Overview of our Process
       </h3>
-      <Flexbox padding='0 3rem 3rem' gap='.5rem' items='flex-start'>
+      <Flexbox css={style.process.cardsBox} items='flex-start'>
         {cards.map((card, index) => (
-          <Flexbox col background={colors.white} padding='48px 45px 0 35px' css={{ height: 460, boxShadow: '0px 7px 12px rgb(100 100 100 / 7%)' }}>
-            <h3 css={{ fontSize: '26px', padding: '0 0 48px 0' }}>{card.title}
-              <div hidden={index === cards.length - 1} css={{ position: 'relative', top: 0, right: 0, width: '100%' }}>
-                <img
-                  css={{ position: 'absolute', right: -85, bottom: -160 }}
-                  src='/images/pages/AbaServices/process_arrow.png'
-                  alt='process arrow'
-                />
-              </div>
-            </h3>
-            <ul css={{ height: 460, '& > li': { fontSize: '15px', lineHeight: '20px', color: '#242c37', margin: '0 0 17px' } }}>
+          <Flexbox key={index} col css={style.process.card as Interpolation<Theme>}>
+            <h3 css={style.process.card_title}>{card.title}</h3>
+            <ul css={index !== cards.length - 1 ? {...style.process.list, ...style.process.list_arrow} : style.process.list}>
               <li>{card.li_1}</li>
               <li>{card.li_2}</li>
               <li>{card.li_3}</li>

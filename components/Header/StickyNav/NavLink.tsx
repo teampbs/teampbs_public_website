@@ -1,7 +1,6 @@
 
 import Link from 'next/link'
 import { FC, useState } from 'react'
-import Image from 'next/image'
 
 import { AnchorBold, mq } from 'styles/styles'
 import { INavLink } from 'interfaces/index'
@@ -13,9 +12,9 @@ const NavLink: FC<INavLink> = ({ title, links, isEmpty }) => {
   return (
     <AnchorBold
       css={mq({
+        flexGrow: 1,
         display: ['none', 'none', 'none', 'block'],
       })}
-      className='flex-grow'
       onMouseLeave={() => setIsOpen(false)}
     >
       <div className='link flex items-center'>
@@ -31,21 +30,14 @@ const NavLink: FC<INavLink> = ({ title, links, isEmpty }) => {
             className='flex items-center'
             onMouseEnter={() => setIsOpen(true)}
           >
-            <span className='link'>{title}</span>
-            <span className='ml-4 flex justify-start'>
-              <Image
-                src='/images/pages/Index/nav_down.png'
-                width='10'
-                height='5'
-              />
-            </span>
+            <p css={{ minWidth: '100%', transition: 'background 1s', marginRight: '1.5rem', background: `url(/images/pages/Index/nav_${isOpen ? 'up' : 'down'}.png) no-repeat`, backgroundPosition: '100% 50%' }}>{title}</p>
           </div>
         )}
       </div>
       {!isEmpty && (
         <div
           css={{boxShadow: '0px 10px 28px rgb(0 0 0 / 25%)'}}
-          className={`dropdown flex flex-col absolute left-0 top-10 rounded-md w-72 p-2.5 bg-white ${
+          className={`flex flex-col absolute left-0 top-10 rounded-md w-72 p-2.5 bg-white ${
             !isOpen && 'hidden'
           }`}
         >

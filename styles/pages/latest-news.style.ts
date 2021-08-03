@@ -15,10 +15,6 @@ export const details_style = {
     marginRight: 'auto',
     color: colors.lightGray,
     cursor: 'pointer',
-    '& img': {
-      display: 'inline',
-      paddingRight: 20,
-    },
   }
 }
 

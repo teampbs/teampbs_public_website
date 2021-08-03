@@ -11,6 +11,7 @@ import {
   OuterFlexDetailsMq,
 } from 'styles/pages/latest-news.style'
 import Button from 'components/shared/Button'
+import Image from 'next/image'
 
 const image = {
   src: '/images/pages/selectYourRegion/banner.png',
@@ -50,14 +51,16 @@ const NewsDetails = () => {
           items='space-between'
           css={InnerFlexDetailsMq}
         >
-          <Link href='/latest-news'>
-            <p css={style.breadcrumb}>
-              <img
+          <Link href='/contact/region'>
+            <a css={style.breadcrumb}>
+              <Image
                 src='/images/pages/LatestNews/grey_back_arrow.png'
                 alt='back arrow'
+                height='10'
+                width='8'
               />{' '}
-              Back To map
-            </p>
+              <span css={{ paddingLeft: '1rem' }}>Back To map</span>
+            </a>
           </Link>
           <Flexbox
             col
@@ -66,18 +69,18 @@ const NewsDetails = () => {
             items='flex-start'
             background={colors.white}
           >
-            <Flexbox justify='center' gap='.5rem' col margin='35px 0'>
-              <img
-                css={{
-                  borderRadius: '50%',
-                  width: '160px',
-                  height: '160px',
-                  position: 'absolute',
-                  bottom: 220,
-                }}
-                src='/images/about_us_banner.png'
-                alt='picture'
-              />
+            <Flexbox css={{ position: 'relative' }} justify='center' gap='.5rem' col margin='35px 0'>
+              <div css={{ position: 'absolute', top: '-60%' }}>
+                <Image
+                  css={{
+                    borderRadius: '50%',
+                  }}
+                  src='/images/about_us_banner.png'
+                  alt='picture'
+                  width='160px'
+                  height='160px'
+                />
+              </div>
               <h2
                 css={{ padding: '25px 0', fontSize: 32, color: colors.black10 }}
               >
@@ -87,7 +90,7 @@ const NewsDetails = () => {
                 BCBA-D , Chief Executive Officer
               </p>
               <Flexbox gap='.5rem' margin='0 0 1rem 0'>
-                <img src='/images/shared/location_icon.png' alt='location' />
+                <Image height='15px' width='10px' src='/images/shared/location_icon.png' alt='location' />
                 <p css={style.date} className='text-sm'>
                   Broward
                 </p>
