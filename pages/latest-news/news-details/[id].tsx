@@ -6,7 +6,7 @@ import Layout from 'components/Layout/Layout'
 import Flexbox from 'components/shared/Flexbox'
 import ServiceSection from 'components/shared/ServiceSection'
 import { colors } from 'utils/constants'
-import { news } from 'utils/mock/news.mock'
+import { news } from 'utils/mock/news'
 import { details_style as style, InnerFlexDetailsMq, OtherNewsMq, OuterFlexDetailsMq } from 'styles/pages/latest-news.style'
 
 const image = {

@@ -1,75 +1,122 @@
-import React, { FC } from 'react'
+import { FC, useState } from 'react'
 
-import {
-  Text,
-  Label,
-  Input,
-  Button,
-  Td,
-  Article,
-  Row,
-  Tbody,
-  TableGrid,
-} from 'components/SelectYourRegion/styles'
+import { style } from 'components/SelectYourRegion/styles'
 import Flexbox from 'components/shared/Flexbox'
 import { appointments, week_days } from 'components/SelectYourRegion/mocks'
+import ToggleCell from 'components/SelectYourRegion/Card/Table/ToggleCell'
+import TableJobHeader from 'components/SelectYourRegion/Card/Table/TableJobHeader'
+import TableRequestHeader from 'components/SelectYourRegion/Card/Table/TableRequestHeader'
+import TableRequestFooter from 'components/SelectYourRegion/Card/Table/TableRequestFooter'
+import TableJobFooter from 'components/SelectYourRegion/Card/Table/TableJobFooter'
+import { mq } from 'styles/styles'
+import { colors } from 'utils/constants'
 
-const Table: FC = () => (
-  <Flexbox col padding='2.5rem 0 0 0'>
-    <Article>
-      <Label className='py-5' htmlFor='hours'>
-        Enter the number of therapy hours you desire to work pre week:
-      </Label>
-      <Input width='10%' id='hours' className='border p-2' type='number' />
-    </Article>
-    <Article>
-      <Text>I am willing to work some weekend hours on:</Text>
-      {React.Children.toArray(
-        ['saturday', 'sunday'].map((name) => (
-          <>
-            <Input width='1rem' id={name} name={name} type='checkbox' />
-            <Label width='4rem' htmlFor={name}>
-              {name.charAt(0).toUpperCase() + name.slice(1)}
-            </Label>
-          </>
-        ))
+const tableCss = mq({
+  '& *': {
+    '::-webkit-scrollbar': {
+      height: 2,
+      width: 2,
+    },
+    '::-webkit-scrollbar-track': {
+      background: colors.gray,
+    },
+    '::-webkit-scrollbar-thumb ': {
+      background: 'rgba(36,44,55,0.1)',
+    },
+  },
+  width: ['100%', '100%', '100%', '100%'],
+})
+
+const nonBusinessDays = ['saturday', 'sunday']
+
+const Table: FC<{ request?: boolean }> = ({ request }) => {
+  const [saturday, setSaturday] = useState(false)
+  const [sunday, setSunday] = useState(false)
+  const [monday, setMonday] = useState(false)
+  const [tuesday, setTuesday] = useState(false)
+  const [wednesday, setWednesday] = useState(false)
+  const [thursday, setThursday] = useState(false)
+  const [friday, setFriday] = useState(false)
+  const [markAll, setMarkAll] = useState(false)
+
+  const handleButton = (bool: boolean) => setMarkAll(bool)
+
+  const getToggleCell = (day, isActive) => (
+    <ToggleCell isMarkAll={markAll} day={day} isDayMarked={isActive} />
+  )
+
+  const handleCheckbox = (day) =>
+    ({
+      saturday: () => setSaturday((prev) => !prev),
+      sunday: () => setSunday((prev) => !prev),
+      monday: () => setMonday((prev) => !prev),
+      tuesday: () => setTuesday((prev) => !prev),
+      wednesday: () => setWednesday((prev) => !prev),
+      thursday: () => setThursday((prev) => !prev),
+      friday: () => setFriday((prev) => !prev),
+    }[day] || null)
+
+  return (
+    <Flexbox col padding='2.5rem 0 0 0'>
+      {request ? (
+        <TableRequestHeader handleButton={handleButton} />
+      ) : (
+        <TableJobHeader handleCheckbox={handleCheckbox} />
       )}
-    </Article>
-    <TableGrid>
-      <thead>
-        <tr className='flex border'>
-          {week_days.map((day) => (
-            <td className='ml-4 font-bold w-full'>{day}</td>
+      <table css={tableCss}>
+        <thead>
+          <tr
+            css={[
+              style.table.row,
+              {
+                overflowX: 'auto',
+                border: '1px solid #ddd',
+              },
+            ]}
+          >
+            {week_days.map((day, index) => (
+              <td
+                key={index}
+                css={[
+                  style.table.cell,
+                  style.table.cellHeader,
+                  day === 'Times'
+                    ? { minWidth: '120px' }
+                    : { minWidth: 'calc(100% / 7)' },
+                ]}
+                onClick={handleCheckbox(day.toLowerCase())}
+              >
+                <span css={style.centering}>{day}</span>
+              </td>
+            ))}
+          </tr>
+        </thead>
+        <tbody css={style.table.tbody}>
+          {appointments.map((item, index) => (
+            <tr key={index} css={style.table.row} id={item}>
+              <td css={[style.table.cell, { minWidth: '120px' }]}>{item}</td>
+              {getToggleCell(nonBusinessDays[1], sunday)}
+              {getToggleCell(week_days[2].toLowerCase(), monday)}
+              {getToggleCell(week_days[3].toLowerCase(), tuesday)}
+              {getToggleCell(week_days[4].toLowerCase(), wednesday)}
+              {getToggleCell(week_days[5].toLowerCase(), thursday)}
+              {getToggleCell(week_days[6].toLowerCase(), friday)}
+              {getToggleCell(week_days[0].toLowerCase(), saturday)}
+            </tr>
           ))}
-        </tr>
-      </thead>
-      <Tbody>
-        {appointments.map((item) => (
-          <Row>
-            <Td>{item}</Td>
-            <Td />
-            <Td />
-            <Td />
-            <Td />
-            <Td />
-            <Td />
-            <Td />
-          </Row>
-        ))}
-      </Tbody>
+        </tbody>
+        {request ? (
+          <TableRequestFooter />
+        ) : (
+          <TableJobFooter handleButton={handleButton} />
+        )}
+      </table>
+    </Flexbox>
+  )
+}
 
-      <Article className='flex justify-between items-center gap-4 p-2'>
-        <p className='text-sm'>
-          Click to select date & time. Click & drag to select multiple dates &
-          times. Click day to select all times available.
-        </p>
-        <div className='flex gap-2'>
-          <Button gray>Check all</Button>
-          <Button gray>Clear</Button>
-        </div>
-      </Article>
-    </TableGrid>
-  </Flexbox>
-)
+Table.defaultProps = {
+  request: false,
+}
 
 export default Table

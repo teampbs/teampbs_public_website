@@ -1,8 +1,10 @@
+import { Interpolation, Theme } from '@emotion/react'
 import HowItWorks from 'components/Index/HowItWorks/HowItWorks'
 import Layout from 'components/Layout/Layout'
-import { Circle, ContainerForm, Info } from 'components/SelectYourRegion/styles'
+import { style as jobStyle } from 'components/SelectYourRegion/styles'
 import Flexbox from 'components/shared/Flexbox'
 import { FC } from 'react'
+import { mq } from 'styles/styles'
 import { colors } from 'utils/constants'
 
 const image = {
@@ -55,17 +57,23 @@ const cards = [
 
 const style = {
   card: {
-    outer: { background: '#FFF', width: '60%' },
-    wrapper: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      gap: '5rem',
+    outer: mq({
+      height: '100%',
       background: '#FFF',
-      padding: '50px 65px 0',
+      width: ['80%', '80%', '80%', '60%'],
+    }),
+    wrapper: mq({
+      display: 'flex',
+      flexDirection: ['column', 'column', 'row', 'row'],
+      justifyContent: 'space-between',
+      gap: ['1rem', '1rem', '5rem', '5rem'],
+      background: '#FFF',
+      padding: ['2rem 2rem 0', '2rem 2rem 0', '50px 65px 0', '50px 65px 0'],
       position: 'relative' as 'relative',
       top: -65,
       height: '100%',
-    },
+      maxHeight: ['750px', '550px', '100%', '100%'],
+    }) as Interpolation<Theme>,
     title: { fontSize: '19px', paddingBottom: '28px' },
     list: {
       background: `url('images/pages/RequestAbaServices/list_bullet_icon.png') 10px no-repeat`,
@@ -76,17 +84,40 @@ const style = {
     subtext: { fontSize: 16 },
     footer: { fontSize: 15, borderTop: 'solid 1px #f2f7fb' },
     footer_text: { color: 'rgba(36,44,55,0.65)', paddingLeft: 36 },
+    infoTitle: {
+      fontWeight: 700,
+      fontSize: '1.5rem',
+      padding: '0 0 0.75rem 0',
+    },
   },
 }
 
 const Card: FC<{ num: number; title: string }> = ({ num, title, children }) => (
   <Flexbox col css={style.card.outer}>
     <div css={style.card.wrapper}>
-      <Circle>{num}</Circle>
-      <Info>
-        <h3 className='font-bold text-2xl pb-3'>{title}</h3>
-      </Info>
-      <ContainerForm css={{ padding: 0 }}>{children}</ContainerForm>
+      <div css={jobStyle.circle}>{num}</div>
+      <div
+        css={mq({
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.25rem',
+          width: ['100%', '100%', '50%', '50%'],
+        })}
+      >
+        <h3 css={style.card.infoTitle}>{title}</h3>
+      </div>
+      <div
+        css={{
+          paddingRight: 100,
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+          gap: '1rem',
+        }}
+      >
+        {children}
+      </div>
     </div>
     {num === 3 && (
       <Flexbox
@@ -194,7 +225,7 @@ const RequestAbaServices: FC = () => (
     </Flexbox>
     <Flexbox
       col
-      height='900px'
+      height='100%'
       justify='flex-start'
       background={colors.darkBlue}
       padding='0 3rem 3rem'

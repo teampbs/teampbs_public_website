@@ -1,7 +1,94 @@
-import styled from '@emotion/styled'
+import { Interpolation, Theme } from '@emotion/react'
+import styled, { CSSObject } from '@emotion/styled'
 
 import { IFlex } from 'interfaces'
 import { colors } from 'utils/constants'
+
+export const styles = {
+  label: {
+    minWidth: '30%',
+    color: colors.textGray,
+    textAlign: 'center',
+    cursor: 'pointer',
+  },
+  box: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 300,
+    padding: '2rem',
+    outline: 'none',
+    width: '100%',
+    gap: 10,
+    border: `1px dashed ${colors.blueGray}`,
+    '& input[type=file]': {
+      width: '10rem',
+      zIndex: 10,
+      cursor: 'pointer',
+      opacity: 0,
+    },
+  } as CSSObject,
+  input: {
+    height: '2rem',
+    width: '1.5rem',
+    outline: 'none',
+  },
+  checkLabel: {
+    color: colors.textGray,
+    whiteSpace: 'nowrap',
+  } as Interpolation<Theme>,
+  labelStyle: {
+    textAlign: 'left',
+    width: '80%',
+    whiteSpace: 'normal',
+  } as Interpolation<Theme>,
+  service: {
+    wrapper: {
+      background: colors.darkBlue,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: colors.white,
+      width: '100%',
+      height: '24rem',
+    },
+    title: {
+      fontSize: '2.25rem',
+      padding: '.5rem',
+      fontWeight: 700,
+    },
+    text: {
+      padding: '2.5rem 0'
+    },
+    link: {
+      marginRight: '1.25rem'
+    }
+  } as CSSObject,
+  recaptcha: {
+    float: 'left',
+    maxWidth: 292,
+    width: 200,
+    marginTop: 10,
+    position: 'relative',
+    transform: 'scale(0.8)',
+    transformOrigin: '0 0',
+    top: -15,
+    paddingBottom: 10,
+    paddingRight: 34,
+  
+    '@media only screen and (max-width: 768px)': {
+      marginTop: 5,
+    },
+  
+    '@media only screen and (max-width: 500px)': {
+      margin: '0 auto',
+      float: 'unset',
+    }
+  } as Interpolation<Theme>
+}
 
 export const InputCustom = styled.input<{ half?: boolean }>((props) => ({
   height: '3rem',
@@ -13,6 +100,7 @@ export const InputCustom = styled.input<{ half?: boolean }>((props) => ({
   outline: 'none',
 }))
 
+// TODO replace with styles
 export const Label = styled.label({
   minWidth: '30%',
   color: colors.textGray,
@@ -27,26 +115,6 @@ export const InputLabel = styled.label<{ nowrap?: boolean }>(props => ({
   paddingRight: 20,
 }))
 
-export const Box = styled.div({
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  height: 300,
-  padding: '2rem',
-  outline: 'none',
-  width: '100%',
-  gap: 10,
-  border: `1px dashed ${colors.blueGray}`,
-  '& input[type=file]': {
-    width: '10rem',
-    zIndex: 10,
-    cursor: 'pointer',
-    opacity: 0,
-  },
-})
-
 export const Button = styled.button({
   position: 'absolute',
   top: 110,
@@ -58,6 +126,15 @@ export const Button = styled.button({
   zIndex: 1,
   cursor: 'pointer',
   whiteSpace: 'nowrap',
+  transition: 'all .3s linear',
+  ':hover': {
+    backgroundColor: '#4bb2f4',
+    color: '#fff',
+    outline: 'none',
+  },
+  ':focus, :active': {
+    outline: 'none'
+  }
 })
 
 export const Area = styled.textarea<{ height: string | number }>(props => ({
@@ -134,16 +211,14 @@ export const Btn = styled.button<{ inverse?: boolean, padding?: string, width?: 
   }
 }))
 
+// TODO check if we still use this code
 export const Input = styled.input({
   height: '2rem',
   width: '1.5rem',
   outline: 'none',
 })
 
-export const CheckLabel = styled.label({
-  color: colors.textGray,
-  whiteSpace: 'nowrap',
-})
+export const modifyErrMsg = { '& .errMsg': { marginLeft: '17rem' } }
 
 export const CheckWrapper = styled.div<{ bg?: boolean, ml?: number | string }>(props => ({
   display: 'flex',
@@ -175,17 +250,6 @@ export const FlexWrap = styled.div<Partial<IFlex>>(
     background,
   })
 )
-
-export const Service = styled.div({
-  background: colors.darkBlue,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: colors.white,
-  width: '100%',
-  height: '24rem',
-})
 
 export const FormGroup = styled.div<{ align?: string, column?: boolean, ml?: boolean, just?: string }>(({ align = 'center', ml, column, just }) => ({
   display: 'flex',

@@ -9,7 +9,7 @@ import { ILayout } from 'interfaces'
 
 const Layout: FC<ILayout> = ({
   children,
-  title = 'ABA Therapy | Applied Behavior Analysis | PBS Corporation',
+  title,
   meta,
   text,
   image,
@@ -58,6 +58,9 @@ const Layout: FC<ILayout> = ({
       <Footer />
     </div>
   )
+}
+Layout.defaultProps = {
+  title: 'ABA Therapy | Applied Behavior Analysis | PBS Corporation'
 }
 
 export default Layout

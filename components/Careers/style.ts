@@ -1,3 +1,5 @@
+import { Interpolation, Theme } from '@emotion/react'
+
 import { colors } from 'utils/constants'
 
 export const style = {
@@ -45,7 +47,12 @@ export const style = {
         right: 50,
         background: 'url(/images/pages/careers/next.png) no-repeat',
       } 
-    },
-    qoute: { '::first-letter': { marginLeft: '3rem' }, paddingTop: '2.5rem', background: 'url(/images/pages/careers/quote.png) no-repeat', backgroundPosition: '0 40%' }
+    } as Interpolation<Theme>,
+    qoute: { '::first-letter': { marginLeft: '3rem' }, paddingTop: '2.5rem', background: 'url(/images/pages/careers/quote.png) no-repeat', backgroundPosition: '0 40%' },
+    dot: { height: '1.25rem', width: '1.25rem' },
+    title: { fontSize: '1.875rem', fontWeight: 700 },
+    wrapper: { display: 'flex', justifyContent: 'space-between', padding: '.75rem 0' },
+    flex: { display: 'flex' },
+    padding: { padding: '.75rem 0' }
   }
 }

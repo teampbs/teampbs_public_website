@@ -35,12 +35,12 @@ export const style = {
     padding: '5rem 0',
   },
   sidebar: {
-    container: {
+    container: mq({
       display: 'flex',
       flexDirection: 'column' as const,
       margin: '25px 0 0 0',
       gap: '1rem',
-      minWidth: '20%',
+      minWidth: ['80%', '80%', '80%', '20%'],
       maxHeight: '700px',
       textAlign: 'left',
       fontSize: '1.5rem',
@@ -52,10 +52,9 @@ export const style = {
         background: colors.gray,
       },
       '::-webkit-scrollbar-thumb ': {
-        // background: colors.lightGray,
         background: 'rgba(36,44,55,0.1)',
       },
-    },
+    }),
     img: {
       width: '.8rem',
       height: '.8rem',
@@ -79,5 +78,9 @@ export const style = {
   link: {
     color: colors.lightBlue,
     marginLeft: '.5rem',
+    cursor: 'pointer',
+    background: `url(/images/shared/right_arrow_blue.png) no-repeat`,
+    backgroundPosition: '100% 50%',
+    paddingRight: '1rem',
   }
 }

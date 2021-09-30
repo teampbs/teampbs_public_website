@@ -10,6 +10,7 @@ export const styles = css`
 
   * {
     box-sizing: border-box;
+    // border: 1px solid red;
   }
 
   html,
@@ -35,7 +36,4 @@ export const styles = css`
     text-decoration: none;
   }
 
-  // * {
-  //   border: 1px solid red;
-  // }
 `;

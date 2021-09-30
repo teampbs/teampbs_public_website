@@ -1,5 +1,3 @@
-import { Interpolation, Theme } from '@emotion/react'
-
 import { qoutes } from 'components/Careers/careers.mock'
 import { style } from 'components/Careers/style'
 
@@ -10,8 +8,8 @@ const Slide = ({ text, className }) => (
 )
 
 export const QuoteSlider = () => (
-  <div className='py-3'>
-    <h3 className='text-3xl font-bold'>What our staff said</h3>
+  <div css={style.slider.padding}>
+    <h3 css={style.slider.title}>What our staff said</h3>
     <div className='slider'>
       {qoutes.map((q, id) => (
         <Slide
@@ -21,14 +19,14 @@ export const QuoteSlider = () => (
         />
       ))}
     </div>
-    <div className='flex justify-between py-3'>
-      <div className='flex'>
-        <div className='h-5 w-5'>&#9679;</div>
-        <div className='h-5 w-5'>&#9679;</div>
-        <div className='h-5 w-5'>&#9679;</div>
-        <div className='h-5 w-5'>&#9679;</div>
+    <div css={style.slider.wrapper}>
+      <div css={style.slider.flex}>
+        <div css={style.slider.dot}>&#9679;</div>
+        <div css={style.slider.dot}>&#9679;</div>
+        <div css={style.slider.dot}>&#9679;</div>
+        <div css={style.slider.dot}>&#9679;</div>
       </div>
-      <div css={style.slider.arrows as Interpolation<Theme>} className='flex' />
+      <div css={[style.slider.arrows, style.slider.flex]} />
     </div>
   </div>
 )

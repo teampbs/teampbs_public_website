@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Wrapper, Area } from 'components/shared/styles'
-import useForm from 'Hooks/useForm'
+import { useFormContext } from 'react-hook-form'
 
 interface P {
   id: string
@@ -10,14 +10,14 @@ interface P {
 }
 
 const Textarea: FC<P> = ({ id, label, height }) => {
-  const { handleChange } = useForm()
+  const { register } = useFormContext()
 
   return (
-      <Wrapper>
-        <label htmlFor={id}>{label}</label>
-        <Area height={height} name={id} id={id} onChange={handleChange} />
-        <p>HINT: you may copy/paste from a word processor program.</p>
-      </Wrapper>
+    <Wrapper>
+      <label htmlFor={id}>{label}</label>
+      <Area height={height} name={id} id={id} {...register(id)} />
+      <p>HINT: you may copy/paste from a word processor program.</p>
+    </Wrapper>
   )
 }
 

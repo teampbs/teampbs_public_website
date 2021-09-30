@@ -2,7 +2,7 @@
 import Link from 'next/link'
 
 import Logo from 'components/Header/Logo'
-import { Nav, TopLeftLink, Anchor } from 'components/Header/styles'
+import { Nav, TopLeftLink, styles } from 'components/Header/styles'
 import Flexbox from 'components/shared/Flexbox'
 import { mq } from 'styles/styles'
 
@@ -39,10 +39,10 @@ const TopNav = () => (
     <Flexbox justify='flex-end'>
       {links.map(({ href, src, alt, name }) => (
         <Link key={alt} href={href}>
-          <Anchor>
+          <a css={styles.topNav.link}>
             <Logo isLogo src={src} alt={alt} width={15} height={15} />
             {name}
-          </Anchor>
+          </a>
         </Link>
       ))}
     </Flexbox>

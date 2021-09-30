@@ -8,7 +8,7 @@ import Flexbox from 'components/shared/Flexbox'
 import Layout from 'components/Layout/Layout'
 import ServiceSection from 'components/shared/ServiceSection'
 import { colors } from 'utils/constants'
-import { news } from 'utils/mock/news.mock'
+import { news } from 'utils/mock/news'
 import { Read } from 'styles/styles'
 import { InnerFlexMq, OuterFlexMq, style } from 'styles/pages/latest-news.style'
 

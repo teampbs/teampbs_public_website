@@ -1,15 +1,15 @@
 
 import Image from 'next/image'
 
-import { Box, BoxMq, Frame, AboutTitle } from 'components/Index/styles'
+import { box, Frame, AboutTitle } from 'components/Index/styles'
 
 const Card = ({ src, alt, text }) => (
-  <Box css={BoxMq}>
+  <div css={box}>
     <Frame>
       <Image src={src} alt={alt} width='80' height='80' />
     </Frame>
     <AboutTitle>{text}</AboutTitle>
-  </Box>
+  </div>
 )
 
 export default Card

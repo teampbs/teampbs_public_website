@@ -1,5 +1,16 @@
 import { formatDate } from 'Helpers/helpers'
 
+export const languages = [
+  'Select',
+  'Afrikaans',
+  'Arabic',
+  'Croatian',
+  'Serbian',
+  'Dutch',
+  'Basque',
+  'Spanish',
+]
+
 export const counties = [
   '',
   'Alachua',
@@ -76,8 +87,7 @@ export const field_list = [
     label: 'Date of application',
     id: 'date_app',
     width: '33%',
-    disabled: true,
-    value: formatDate,
+    value: formatDate(),
   },
   { label: 'Street Address', id: 'street' },
   { label: 'Apartment/Unit #', id: 'unit', width: '33%' },
@@ -112,7 +122,7 @@ export const week_days = [
 ]
 
 export const degrees = [
-  'None',
+  '',
   'EdD',
   'PsyD',
   'Med',
@@ -130,7 +140,7 @@ export const refInputs = [
   { label: 'Full Name', id: 'name', half: false, placeholder: '' },
   { label: 'Relationship', id: 'relationship', half: false, placeholder: '' },
   { label: 'Company', id: 'company', half: false, placeholder: '' },
-  { label: 'Phone', id: 'phone', half: true, placeholder: '(XXX)XXX-XXX' },
+  { label: 'Phone', id: 'ref_phone', half: true, placeholder: '(XXX)XXX-XXX' },
   { label: 'Address', id: 'address', half: false, placeholder: '' },
 ]
 

@@ -1,11 +1,6 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
-import {
-  Text,
-  Circle,
-  ContainerForm,
-  Info,
-} from 'components/SelectYourRegion/styles'
+import { Text, style, Info } from 'components/SelectYourRegion/styles'
 import { ICard } from 'interfaces'
 import Button from 'components/shared/Button'
 import Table from 'components/SelectYourRegion/Card/Table/Table'
@@ -17,48 +12,78 @@ import Resume from 'components/SelectYourRegion/Card/Resume/Resume'
 import LawInfo from 'components/SelectYourRegion/Card/LawInfo/LawInfo'
 import OtherInfo from 'components/SelectYourRegion/Card/OtherInfo/OtherInfo'
 import Authorization from 'components/SelectYourRegion/Card/Authorization/Authorization'
-import useForm from 'Hooks/useForm'
+import CustomRecaptcha from 'components/shared/Recaptcha/Recaptcha'
+
+const wrapper = {
+  paddingRight: 100,
+  width: '100%',
+}
 
 const Card: FC<ICard> = ({
   num,
-  isTable = false,
+  isTable,
   title,
   subtitle,
   require,
   submit,
 }) => {
-  const { handleSubmit } = useForm()
+  const [, setCaptcha] = useState('')
+
+  const recaptchaLoaded = () => {
+    console.log('reCAPTCHA loaded')
+  }
+
+  const verifyCallback = (response) => {
+    setCaptcha(response ?? '')
+  }
 
   return (
     <div
-      className={`flex ${
-        isTable && 'flex-col'
-      } bg-white justify-between w-3/5 relative p-10`}
+      css={[
+        style.card_wrapper,
+        { marginBottom: 0 },
+        isTable && { flexDirection: 'column' },
+      ]}
     >
-      {num !== 0 && <Circle>{num}</Circle>}
-      <Info small={!require && title !== 'Resume'}>
+      {num !== 0 && <div css={style.circle}>{num}</div>}
+      <Info
+        css={title === 'Captcha' && style.recaptchaWrapper}
+        small={!require && title !== 'Resume'}
+      >
         {require && (
           <Text red className='text-red-500'>
             Skip this section by uploading a resume
           </Text>
         )}
-        <h3 className='font-bold text-2xl pb-3'>{title}</h3>
+        <h3 css={style.heading}>{title}</h3>
         <Text>{subtitle}</Text>
       </Info>
-        <ContainerForm>
-          {num === 1 && <ApplicantInfo />}
-          {num === 2 && <Table />}
-          {num === 3 && <LawInfo />}
-          {num === 4 && <Education />}
-          {num === 5 && <References />}
-          {num === 6 && <Employment />}
-          {num === 7 && <Resume />}
-          {num === 8 && <OtherInfo />}
-          {num === 9 && <Authorization />}
-          {submit && <Button type='submit' children='submit' onSubmit={handleSubmit} />}
-        </ContainerForm>
+      <div css={[wrapper, num === 2 ? { padding: 0 } : {}]}>
+        {num === 1 ? <ApplicantInfo /> : null}
+        {num === 2 ? <Table /> : null}
+        {num === 3 ? <LawInfo /> : null}
+        {num === 4 ? <Education /> : null}
+        {num === 5 ? <References /> : null}
+        {num === 6 ? <Employment /> : null}
+        {num === 7 ? <Resume /> : null}
+        {num === 8 ? <OtherInfo /> : null}
+        {num === 9 ? <Authorization /> : null}
+        {submit && (
+          <>
+            <CustomRecaptcha
+              verifyCallback={verifyCallback}
+              onloadCallback={recaptchaLoaded}
+            />
+            <Button type='submit' children='submit' />
+          </>
+        )}
+      </div>
     </div>
   )
+}
+
+Card.defaultProps = {
+  isTable: false,
 }
 
 export default Card

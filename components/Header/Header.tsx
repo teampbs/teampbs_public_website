@@ -6,17 +6,17 @@ import StickyNav from 'components/Header/StickyNav/StickyNav'
 import TitleSection from 'components/Header/TitleSection'
 import TopNav from 'components/Header/TopNav'
 import { IHeader } from 'interfaces'
-import { Box, Heading, HeadingImgMq, HeadingMq, Video, VideoMq } from 'components/Header/styles'
+import { Box, Heading, HeadingImgMq, HeadingMq, styles } from 'components/Header/styles'
 
 const Header: FC<IHeader> = ({
   video,
   image,
   text,
-  height = '90vh',
+  height,
   scrolling,
   black,
   moreInfo,
-  bg = 'rgba(0,0,0,0.45)',
+  bg,
 }) => (
   <Heading
     css={video ? HeadingMq : HeadingImgMq}
@@ -25,8 +25,8 @@ const Header: FC<IHeader> = ({
     height={height}
   >
     {video ? (
-      <Video
-        css={VideoMq}
+      <video
+        css={styles.video}
         src='images/video/friday.mp4'
         autoPlay
         muted
@@ -55,5 +55,10 @@ const Header: FC<IHeader> = ({
     />
   </Heading>
 )
+
+Header.defaultProps = {
+  height: '90vh',
+  bg: 'rgba(0,0,0,0.45)',
+}
 
 export default Header

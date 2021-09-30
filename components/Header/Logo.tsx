@@ -14,12 +14,12 @@ const logoStyle = {
     '0 auto 1rem auto',
     '0 auto 0 0',
   ],
-  width: ['auto', 'auto', 'auto'],
+  width: ['150px', 'auto', 'auto', 'auto'],
 }
 
 const logoStyleFix = {
   margin: ['0 auto 0 auto', '0 auto 0 auto', '0 auto 0 auto', '0 auto 0 0'],
-  width: ['auto', 'auto', 'auto'],
+  width: ['150px', 'auto', 'auto', 'auto'],
 }
 
 const menuStyle = {
@@ -27,8 +27,8 @@ const menuStyle = {
   margin: ['0 auto 0 0', '0 auto 0 0', '0 auto 0 0', '0 auto 0 auto'],
 }
 
-const Logo: FC<ILogo> = ({ src, alt, width, height, isLogo, isScroll, link }) => (
-  <Frame css={mq(isLogo ? (isScroll ? logoStyleFix : logoStyle) : menuStyle)}>
+const Logo: FC<ILogo> = ({ src, alt, width, height, isLogo, isScroll, link, setSidebar }) => (
+  <Frame css={mq(isLogo ? (isScroll ? logoStyleFix : logoStyle) : menuStyle)} onClick={!isLogo ? setSidebar : null}>
     {link ? (
       <Link href={link}>
         <a>

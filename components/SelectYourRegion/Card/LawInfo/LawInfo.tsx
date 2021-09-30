@@ -1,37 +1,43 @@
 import { FC } from 'react'
-import styled from '@emotion/styled'
+import { Interpolation } from '@emotion/styled'
+import { Theme } from '@emotion/react'
 
 import Select from 'components/shared/Inputs/Select'
 import Textarea from 'components/shared/Textarea'
 import Checkbox from 'components/shared/Inputs/Checkbox'
 import { colors } from 'utils/constants'
-import { degrees } from '../../mocks'
+import { degrees } from 'components/SelectYourRegion/mocks'
 
-const Legend = styled.p<{ margin?: string }>(props => ({
+const legend = {
   color: colors.textGray,
   width: '40%',
   whiteSpace: 'nowrap',
   textAlign: 'right',
-  marginRight: props.margin
-}))
+} as Interpolation<Theme>
 
-const Flex = styled.div({
+const flex = {
   display: 'flex',
   width: '100%',
-})
+}
 
-const Box = styled.div({
+const box = {
   display: 'flex',
   flexDirection: 'column',
   gap: 10,
   width: '100%'
-})
+} as Interpolation<Theme>
+
+const wrap = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '.5rem',
+} as Interpolation<Theme>
 
 const LawInfo: FC = () => (
-  <div className='flex flex-col gap-2'>
-    <Flex>
-      <Legend>Languages Spoken</Legend>
-      <Box>
+  <div css={wrap}>
+    <div css={flex}>
+      <div css={legend}>Languages Spoken</div>
+      <div css={box}>
         <div className='mb-10'>
           <Checkbox bg id='en' label='English' />
           <Checkbox id='es' label='Spanish' />
@@ -49,19 +55,19 @@ const LawInfo: FC = () => (
           id='hear'
           label='How did you hear about Team PBS?'
         />
-      </Box>
-    </Flex>
-    <Flex>
-      <Legend>Highest Degree</Legend>
-      <Box>
+      </div>
+    </div>
+    <div css={flex}>
+      <div css={legend}>Highest Degree</div>
+      <div css={box}>
         <Select id='degrees' list={degrees} />
         <Checkbox
           id='coursework'
           label='Are you currently enrolled in Behavior Analysis coursework?'
         />
         <Checkbox id='npi_number' label='I have a NPI number' />
-      </Box>
-    </Flex>
+      </div>
+    </div>
   </div>
 )
 

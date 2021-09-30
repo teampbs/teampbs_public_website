@@ -39,39 +39,12 @@ export const Track = styled.div({
   flex: '0 0 100%',
 })
 
-export const Read = styled.a({
-  color: colors.lightBlue,
-  fontSize: '14px',
-  paddingLeft: '16px',
-  cursor: 'pointer'
-})
-
 export const Slide = styled.div({
   padding: '0 15rem',
   gap: '20px',
   width: '100%',
   position: 'relative',
   flex: '0 0 100%',
-})
-
-export const NewsCard = styled.div({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '2rem',
-  height: '76px',
-  width: '100%',
-  margin: 0,
-  padding: '0 250px',
-})
-
-export const NewsTitle = styled.a({
-  fontWeight: 700,
-  fontSize: 20,
-  fontFamily: `'Roboto Slab', serif`,
-  margin: 0,
-  padding: '0 0 0 15',
-  cursor: 'pointer',
-  whiteSpace: 'nowrap',
 })
 
 export const Text = styled.p({
@@ -109,76 +82,6 @@ export const NewsTitleMq = mq({
   fontSize: ['1rem', '1rem', '1.25rem', '1.25rem'],
 })
 
-// * Presentation
-
-export const Wrapper = styled.div({
-  display: 'flex',
-  justifyContent: 'center',
-  background: colors.black10,
-  width: '100%',
-  height: 775,
-  padding: 115,
-})
-
-export const WrapperMq = mq({
-  flexDirection: ['column', 'column', 'column', 'row'],
-  alignItems: ['center', 'center', 'center', 'center'],
-  justifyContent: ['center', 'center', 'center', 'center'],
-  padding: ['50px 0 50px 0', '50px 0 50px 0', '50px 0 50px 0', '115px'],
-})
-
-export const ShowOnSmall = mq({
-  display: ['flex', 'flex', 'flex', 'none']
-})
-
-export const HideOnSmall = mq({
-  display: ['none', 'none', 'none', 'flex']
-})
-
-export const Header = styled.header({
-  display: 'flex',
-  gap: '1rem',
-  marginRight: 'auto',
-  color: colors.white,
-})
-
-export const HeaderMq = mq({
-  width: ['100%', '100%', '100%', '300px'],
-  textAlign: ['center', 'center', 'center', 'left'],
-  justifyContext: ['center', 'center', 'center', 'center'],
-  alignItems: ['center', 'center', 'center', 'center'],
-  flexDirection: ['column', 'column', 'column', 'column'],
-  padding: ['0', '0', '0', '0 0 0 5rem'],
-})
-
-// * HowItWorks
-
-export const Card = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '325px',
-  maxWidth: '20%',
-  minWidth: '250px',
-  margin: '0 1rem',
-  textAlign: 'center',
-  '& > *': {
-    margin: '1rem 0',
-  }
-})
-
-export const P = styled.p({
-  fontSize: 14,
-  lineHeight: '23px',
-  color: '#778597'
-})
-
-export const Subtitle = styled.h2({
-  fontSize: 22,
-  fontWeight: 700,
-  lineHeight: '25px'
-})
-
 export const Counter = styled.div({
   width: 30,
   height: 30,
@@ -191,55 +94,17 @@ export const Counter = styled.div({
   justifyContent: 'center'
 })
 
-export const SectionBox = styled.div({
+export const box = mq({
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  color: 'black',
-  paddingBottom: '10rem',
-  width: '100%',
-})
-
-export const SectionBoxMq = mq({
-  padding: ['0 0 60px 0', '0 0 60px 0', '0 0 94px 0', '0 0 94px 0']
-})
-
-export const Title = styled.h1({
-  fontSize: '35px',
-  fontWeight: 700,
-})
-
-export const CardBox = styled.div({
-  display: 'flex',
-  justifyContent: 'center',
-  padding: '2rem 15rem',
-  width: '100%',
-  flexWrap: 'wrap'
-})
-
-export const CardBoxMq = mq({
-  alignItems: ['center', 'center', 'center', 'center'],
-  // flexDirection: ['column', 'column', 'row', 'row'],
-  // margin: ['1rem auto', '1rem auto', '3rem auto', '3rem auto'],
-})
-
-// * AboutSection
-
-export const Box = styled.div({
-  display: 'flex',
-  paddingBottom: '2rem',
-})
-
-export const BoxMq = mq({
-  paddingBottom: ['0', '0', '2rem', '2rem'],
+  flexDirection: ['column', 'row', 'row', 'row'],
+  alignItems: ['center'],
+  padding: ['0 7rem 2rem 7rem', '0 0 0 0', '0 0 2rem 0', '0 0 2rem 0'],
 })
 
 export const Frame = styled.div({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: '80px',
-  height: '80px',
   background: colors.blueMild,
   borderRadius: '100%',
   margin: '1rem 1rem 0 0',
@@ -251,40 +116,177 @@ export const AboutTitle = styled.h4({
   width: '100%',
 })
 
-export const Container = styled.section({
-  display: 'flex',
-  color: colors.black00,
-  maxWidth: '70%',
-  margin: '3rem auto',
-})
-
-export const ContainerMq = mq({
-  maxWidth: ['100%', '100%', '70%', '70%'],
-  flexDirection: ['column', 'column', 'row', 'row'],
-  margin: ['1rem auto', '1rem auto', '3rem auto', '3rem auto'],
-})
-
-export const Article = styled.article({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 50,
-  width: 650,
-  padding: '2rem',
-  fontSize: '19px',
-  '& > p': {
-    lineHeight: '31px',
-    fontSize: '16px',
-  },
-})
-
-export const ArticleMq = mq({
-  gap: [10, 10, 50, 50],
-  padding: ['1rem 0', '1rem 0', '2rem', '2rem'],
-})
-
 export const AnchorLink = styled.a({
   alignSelf: 'end',
   fontSize: '15px',
   color: colors.lightBlue,
   fontWeight: 700,
 })
+
+export const style = {
+  presentation: {
+    wrapper: mq({
+      display: 'flex',
+      background: colors.black10,
+      width: '100%',
+      height: 775,
+      flexDirection: ['column', 'column', 'column', 'row'],
+      alignItems: ['center', 'center', 'center', 'center'],
+      justifyContent: ['center', 'center', 'center', 'center'],
+      padding: ['50px 0 50px 0', '50px 0 50px 0', '50px 0 50px 0', '115px'],
+    }),
+    header: mq({
+      display: 'flex',
+      gap: '1rem',
+      marginRight: 'auto',
+      color: colors.white,
+      width: ['100%', '100%', '100%', '300px'],
+      textAlign: ['center', 'center', 'center', 'left'],
+      justifyContext: ['center', 'center', 'center', 'center'],
+      alignItems: ['center', 'center', 'center', 'center'],
+      flexDirection: ['column', 'column', 'column', 'column'],
+      padding: ['0', '0', '0', '0 0 0 5rem'],
+    }),
+    video: { padding: '2rem', minWidth: '80%', minHeight: '400px' },
+    inverseBtnWrap: mq({
+      display: ['none', 'none', 'none', 'flex']
+    }),
+    btnWrap: mq({
+      display: ['flex', 'flex', 'flex', 'none']
+    }),
+    title: mq({
+      fontWeight: 700,
+      fontSize: ['26px', '26px', '32px', '35px'],
+    }),
+    text: {
+      fontSize: 16,
+      padding: '.5rem 0'
+    }
+  },
+  slider: {
+    container: mq({ paddingTop: ['2rem', '2rem', '0', '0'], width: '100%', boxShadow: ['', '', 'rgba(100, 100, 100, 0.07) 0px 7px 12px 0px'] }),
+    card: mq({
+      display: 'flex',
+      flexDirection: ['column', 'column', 'row', 'row'],
+      alignItems: 'center',
+      justifyContent: ['center', 'center', '', ''],
+      gap: [0, 0, '2rem', '2rem'],
+      height: ['100%', '100%', '76px', '76px'],
+      maxWidth: ['390px', '390px', '100%', '100%'],
+      margin: ['0 auto', '0 auto', 0, 0],
+      padding: ['20px 0', '20px 0', '0', '0 250px'],
+      border: ['1px solid #ddd', '1px solid #ddd', '0', '0'],
+      borderRadius: 4,
+      boxSizing: 'border-box',
+    }),
+    link: {
+      color: colors.lightBlue,
+      fontSize: '14px',
+      paddingLeft: '16px',
+      cursor: 'pointer'
+    },
+    text: { fontSize: 15, color: colors.black10, padding: '0 0 0 15' },
+    title: {
+      fontWeight: 700,
+      fontSize: 20,
+      fontFamily: `'Roboto Slab', serif`,
+      margin: 0,
+      padding: '0 0 0 15',
+      cursor: 'pointer',
+      whiteSpace: 'nowrap',
+    }
+  },
+  works: {
+    card: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      width: '325px',
+      maxWidth: '20%',
+      minWidth: '250px',
+      margin: '0 1rem',
+      textAlign: 'center',
+      '& > *': {
+        margin: '1rem 0',
+      }
+    },
+    counter: {
+      width: 30,
+      height: 30,
+      border: `1px solid ${colors.lightBlue}`,
+      color: colors.lightBlue,
+      borderRadius: '50%',
+      margin: '1rem 0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    text: {
+      fontSize: 14,
+      lineHeight: '23px',
+      color: '#778597'
+    },
+    subtitle: {
+      fontSize: 22,
+      fontWeight: 700,
+      lineHeight: '25px'
+    },
+    title: {
+      fontSize: '35px',
+      fontWeight: 700,
+    },
+    darkTitle: {
+      color: colors.white,
+      fontSize: 35,
+      marginTop: '8rem',
+    },
+    section: mq({
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      color: 'black',
+      paddingBottom: '10rem',
+      width: '100%',
+      padding: ['0 0 60px 0', '0 0 60px 0', '0 0 94px 0', '0 0 94px 0']
+    }),
+    cardBox: mq({
+      display: 'flex',
+      justifyContent: 'center',
+      padding: ['1rem 0', '1rem 0', '2rem 0', '2rem 10rem'],
+      width: '100%',
+      flexWrap: 'wrap',
+    }),
+    submit: { fontSize: 18, margin: 'auto' }
+  },
+  about: {
+    container: mq({
+      display: 'flex',
+      color: colors.black00,
+      maxWidth: ['100%', '100%', '70%', '70%'],
+      flexDirection: ['column', 'column', 'row', 'row'],
+      margin: ['1rem auto', '1rem auto', '3rem auto', '3rem auto'],
+      padding: ['0 2rem', '0 2rem', '', ''],
+    }),
+    article: mq({
+      display: 'flex',
+      flexDirection: 'column',
+      width: ['100%', '650px', 650, 650],
+      fontSize: '19px',
+      '& > p': {
+        lineHeight: '31px',
+        fontSize: '16px',
+      },
+      gap: [10, 10, 50, 50],
+      padding: ['1rem 0', '1rem 0', '2rem', '2rem'],
+    }),
+    text: mq({
+      fontSize: ['14px', '14px', '16px', '16px'],
+    }),
+    link: {
+      alignSelf: 'end',
+      fontSize: '15px',
+      color: colors.lightBlue,
+      fontWeight: 700,
+    }
+  }
+}

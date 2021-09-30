@@ -33,8 +33,8 @@ export const JobsSection = () => (
         decisions are made without regard to sex, race, age, disability,
         religion, national origin, color or any other protected class.
       </p>
-      {jobs.map((job) => (
-        <Expand {...job} />
+      {jobs.map((job, index) => (
+        <Expand key={index} {...job} />
       ))}
     </article>
     <article css={style.article}>

@@ -1,7 +1,7 @@
 import { FC } from 'react'
+import { useFormContext } from 'react-hook-form'
 
-import useForm from 'Hooks/useForm'
-import { CheckWrapper, CheckLabel, Input } from 'components/shared/styles'
+import { CheckWrapper, styles } from 'components/shared/styles'
 interface P {
   id: string
   label: string
@@ -10,23 +10,23 @@ interface P {
 }
 
 const Checkbox: FC<P> = ({ id, label, bg, ml }) => {
-  const { handleChange } = useForm()
+  const { register } = useFormContext()
 
   return (
     <CheckWrapper ml={ml} bg={bg}>
-      <CheckLabel
-        css={
-          id === 'permission' && {
-            textAlign: 'left',
-            width: '80%',
-            whiteSpace: 'normal',
-          }
-        }
+      <label
+        css={[id === 'permission' && styles.labelStyle, styles.checkLabel]}
         htmlFor={id}
       >
         {label}
-      </CheckLabel>
-      <Input name={id} type='checkbox' id={id} onChange={handleChange} />
+      </label>
+      <input
+        css={styles.input}
+        name={id}
+        type='checkbox'
+        id={id}
+        {...register(id)}
+      />
     </CheckWrapper>
   )
 }

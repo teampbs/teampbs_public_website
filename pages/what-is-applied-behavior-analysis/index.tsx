@@ -54,8 +54,8 @@ const PbsTechnology = () => (
       <Text margin='1.25rem 0 0 0' color={colors.textGray}>
         Learn why this approach is so successful.
       </Text>
-      {expandCards.map(({ title, id }) => (
-        <Expand title={title}>
+      {expandCards.map(({ title, id }, index) => (
+        <Expand key={index} title={title}>
           {id === 1 && <Card_one />}
           {id === 2 && <Card_two />}
           {id === 3 && <Card_three />}

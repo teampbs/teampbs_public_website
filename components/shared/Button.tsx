@@ -1,4 +1,5 @@
 
+
 import Image from 'next/image'
 import { FC } from 'react'
 
@@ -17,10 +18,18 @@ interface IButton {
   height?: string
 }
 
+const scrollOn = mq({
+  margin: ['0 0 0 0', '0 0 0 0', '0 0 0 0', '0 0 0 0'],
+})
+
+const scrollOff = mq({
+  margin: ['0 0 1rem 0', '0 0 1rem 0', '0 0 1rem 0', '0 0 0 0'],
+})
+
 const Button: FC<IButton> = ({
-  width = '180px',
-  padding = '0 32px',
-  type = 'button',
+  width,
+  padding,
+  type,
   children,
   icon,
   onSubmit,
@@ -37,22 +46,24 @@ const Button: FC<IButton> = ({
     type={type}
     onSubmit={onSubmit}
     className={icon && 'flex justify-between items-center'}
-    css={navBtn && mq(!isScroll ? {
-      margin: ['0 0 1rem 0', '0 0 1rem 0', '0 0 1rem 0', '0 0 0 0']
-    } : {
-      margin: ['0 0 0 0', '0 0 0 0', '0 0 0 0', '0 0 0 0']
-    })}
+    css={navBtn && isScroll ? scrollOn : scrollOff}
   >
     {children}
     {icon && (
       <Image
         width='8'
         height='13'
-        src={inverse ? '/images/shared/right_arrow_blue.png' : '/images/arrow-right.png'}
+        src={`/images/shared/${inverse ? 'right_arrow_blue' : 'arrow_right'}.png`}
         alt='blue arrow'
       />
     )}
   </Btn>
 )
+
+Button.defaultProps = {
+  width: '180px',
+  padding: '0 32px',
+  type: 'button',
+}
 
 export default Button

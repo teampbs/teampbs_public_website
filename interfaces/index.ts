@@ -57,6 +57,7 @@ export interface ICard {
   subtitle?: string
   require?: boolean
   submit?: boolean
+  register?: any
 }
 
 export interface IDropDownLink {
@@ -69,6 +70,8 @@ export interface INavLink {
   title: string
   links: IDropDownLink[]
   isEmpty: boolean
+  isSticky: boolean
+  isSide?: boolean
 }
 
 export interface IExpand {
@@ -104,6 +107,7 @@ export interface ILogo {
   isLogo?: boolean
   isScroll?: boolean
   link?: string
+  setSidebar?: any
 }
 
 export interface IFlex {

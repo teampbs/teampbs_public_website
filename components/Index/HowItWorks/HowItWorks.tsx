@@ -1,38 +1,26 @@
-import { MediaCard } from 'components/Index/HowItWorks/MediaCard'
-import {
-  CardBox,
-  SectionBox,
-  Title,
-  SectionBoxMq,
-} from 'components/Index/styles'
-import Button from 'components/shared/Button'
 import Link from 'next/link'
 import { FC } from 'react'
-import { colors } from 'utils/constants'
+import { Interpolation, Theme } from '@emotion/react'
 
-const darkStyle = {
-  color: colors.white,
-  fontSize: 35,
-  marginTop: '8rem',
-}
+import { MediaCard } from 'components/Index/HowItWorks/MediaCard'
+import { style } from 'components/Index/styles'
+import Button from 'components/shared/Button'
 
 const HowItWorks: FC<{ dark?: boolean; list: any }> = ({ dark, list }) => (
-  <SectionBox css={SectionBoxMq}>
-    <Title css={dark && darkStyle}>
+  <div css={style.works.section}>
+    <h1 css={[style.works.title, dark && style.works.darkTitle]}>
       {dark ? 'The approval process' : 'How it works'}
-    </Title>
-    <CardBox>
+    </h1>
+    <div css={style.works.cardBox as Interpolation<Theme>}>
       {list.map((item, index) => (
         <MediaCard dark={dark} key={index} {...item} />
       ))}
-    </CardBox>
+    </div>
     {dark ? (
       <Link href='/request-aba-services/request-region'>
         <a>
           <Button height='70px' width='336px' icon>
-            <p css={{ fontSize: 18, margin: 'auto' }}>
-              Submit Service Request
-            </p>
+            <p css={style.works.submit}>Submit Service Request</p>
           </Button>
         </a>
       </Link>
@@ -41,7 +29,7 @@ const HowItWorks: FC<{ dark?: boolean; list: any }> = ({ dark, list }) => (
         Request ABA Therapy
       </Button>
     )}
-  </SectionBox>
+  </div>
 )
 
 export default HowItWorks

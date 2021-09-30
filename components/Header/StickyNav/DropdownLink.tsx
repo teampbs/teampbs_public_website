@@ -5,7 +5,7 @@ import { IDropDownLink } from 'interfaces/index'
 
 const DropdownLink: FC<IDropDownLink> = ({ href, title }) => (
   <Link href={href}>
-    <a className="leading-10 hover:bg-blue-50 rounded">
+    <a className="leading-10 hover:bg-blue-50 rounded sidebar_css">
       <span className='font-bold text-sm text-textGray relative font-medium rounded-md h-full m-0 px-8'>
         {title}
       </span>

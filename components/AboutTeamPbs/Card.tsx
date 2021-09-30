@@ -1,16 +1,29 @@
-import styled from '@emotion/styled'
+import { mq } from 'styles/styles'
 
 import { colors } from 'utils/constants'
 
-const CardStyled = styled.div({
-  background: colors.blueMild,
-})
+const style = {
+  card: mq({
+    background: colors.blueMild,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '2.5rem',
+    margin: '2.5rem',
+    width: ['80%', '80%', '80%', '40%']
+  }),
+  title: {
+    fontWeight: 700,
+    fontSize: '1.875rem',
+    paddingBottom: '2.5rem',
+  }
+}
 
 const Card = ({ title, children }) => (
-  <CardStyled className='flex flex-col items-center p-10 m-10 w-2/5'>
-    <h3 className='font-bold text-3xl pb-10'>{title}</h3>
+  <div css={style.card}>
+    <h3 css={style.title}>{title}</h3>
     {children}
-  </CardStyled>
+  </div>
 )
 
 export default Card

@@ -8,7 +8,7 @@ import Flexbox from 'components/shared/Flexbox'
 const Employment: FC = () => (
   <Flexbox items='' col gap='0.5rem'>
     <Input label='Company' id='company' />
-    <Input label='Phone' id='phone' half placeholder='(XXX)XXX-XXX' />
+    <Input label='Phone' id='emp_phone' half placeholder='(XXX)XXX-XXX' />
     <Input label='Address' id='address' />
     <Input label='Supervisor' id='supervisor' />
     <Input label='Job Title' id='job' />
