@@ -7,7 +7,7 @@ export default function useWindowDimensions() {
   })
 
   useEffect(() => {
-    if (typeof globalThis !== 'undefined') {
+    if (typeof globalThis !== 'undefined' && process.browser) {
       function handleResize() {
         setWindowDimensions({
           width: globalThis.innerWidth,
