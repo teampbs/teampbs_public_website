@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import Link from 'next/link'
 
 import Button from 'components/shared/Button'
