@@ -16,7 +16,6 @@ export default function useWindowDimensions() {
 
     globalThis.addEventListener('resize', handleResize)
     return () => globalThis.removeEventListener('resize', handleResize)
-
   }, [])
 
   return windowDimensions

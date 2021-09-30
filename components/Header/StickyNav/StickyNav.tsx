@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import Button from 'components/shared/Button'
@@ -8,16 +8,30 @@ import NavLink from 'components/Header/StickyNav/NavLink'
 import { style } from 'components/Header/styles'
 import useWindowDimensions from 'hooks/useWindowsDimensions'
 import SideBar from 'components/Header/StickyNav/SideBar'
+// import dynamic from 'next/dynamic'
 
 interface IStickyNav {
   scrolling: boolean
   black?: boolean
 }
 
+// const useWindowDimensions = dynamic(() => import('hooks/useWindowsDimensions'), { ssr: false })
+
+// async function loadCustomHook() {
+//   const customHook = await import('hooks/useWindowsDimensions')
+
+//   return customHook
+// }
 
 const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
   const [sidebar, setSidebar] = useState(false)
+//   const [useCustomHook, setUseCustomHook] = useState(() => () => {})
+
   const { width } = useWindowDimensions()
+
+//   useEffect(() => {
+//     loadCustomHook().then(customHook => setUseCustomHook(customHook))
+// }, [])
 
   const toggleSidebar = () => setSidebar((prev) => !prev)
 
