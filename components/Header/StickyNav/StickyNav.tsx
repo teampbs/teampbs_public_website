@@ -14,6 +14,7 @@ interface IStickyNav {
   black?: boolean
 }
 
+
 const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
   const [sidebar, setSidebar] = useState(false)
   const { width } = useWindowDimensions()
