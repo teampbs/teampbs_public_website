@@ -7,7 +7,6 @@ export default function useWindowDimensions() {
   })
 
   useEffect(() => {
-    // only execute all the code below in client side
     if (typeof window !== 'undefined') {
       function handleResize() {
         setWindowDimensions({
