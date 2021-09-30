@@ -6,7 +6,6 @@ import Logo from 'components/Header/Logo'
 import { navs } from 'components/Header/StickyNav/nav_mocks'
 import NavLink from 'components/Header/StickyNav/NavLink'
 import { style } from 'components/Header/styles'
-// @ts-ignore
 import useWindowDimensions from 'hooks/useWindowsDimensions'
 import SideBar from 'components/Header/StickyNav/SideBar'
 

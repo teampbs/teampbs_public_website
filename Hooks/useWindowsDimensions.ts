@@ -7,16 +7,16 @@ export default function useWindowDimensions() {
   })
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis !== 'undefined') {
       function handleResize() {
         setWindowDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight,
+          width: globalThis.innerWidth,
+          height: globalThis.innerHeight,
         })
       }
 
-      window.addEventListener('resize', handleResize)
-      return () => window.removeEventListener('resize', handleResize)
+      globalThis.addEventListener('resize', handleResize)
+      return () => globalThis.removeEventListener('resize', handleResize)
     }
 
   }, [])
