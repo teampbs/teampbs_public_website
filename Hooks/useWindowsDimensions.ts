@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react'
 
-interface IwindowDimensions {
+interface IWindowDimensions {
   width: number | undefined
   height: number | undefined
 }
 
 
-export function useWindowDimensions(): IwindowDimensions {
-  const [windowDimensions, setWindowDimensions] = useState({
+export const useWindowDimensions = (): IWindowDimensions => {
+  const [windowDimensions, setWindowDimensions] = useState<IWindowDimensions>({
     width: undefined,
     height: undefined,
   })
 
   useEffect(() => {
-    function handleResize() {
+    function handleResize(): void {
       setWindowDimensions({
         width: globalThis.innerWidth,
         height: globalThis.innerHeight,
