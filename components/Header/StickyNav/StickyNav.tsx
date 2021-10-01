@@ -15,14 +15,6 @@ interface IStickyNav {
   black?: boolean
 }
 
-// const useWindowDimensions = dynamic(() => import('hooks/useWindowsDimensions'), { ssr: false })
-
-// async function loadCustomHook() {
-//   const customHook = await import('hooks/useWindowsDimensions')
-
-//   return customHook
-// }
-
 const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
   const [sidebar, setSidebar] = useState(false)
 //   const [useCustomHook, setUseCustomHook] = useState(() => () => {})
