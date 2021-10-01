@@ -4,7 +4,7 @@ import Flexbox from 'components/shared/Flexbox'
 import { Text, style, Info } from 'components/SelectYourRegion/styles'
 import { colors } from 'utils/constants'
 import { modifyErrMsg } from 'components/shared/styles'
-import useWindowDimensions from '@hooks/useWindowsDimensions'
+import { useWindowDimensions } from '@hooks/useWindowsDimensions'
 
 const status = ['', 'Male', 'Female']
 

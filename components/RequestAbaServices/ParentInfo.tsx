@@ -6,7 +6,7 @@ import { colors } from 'utils/constants'
 import { counties } from 'components/SelectYourRegion/mocks'
 import Button from 'components/shared/Button'
 import { modifyErrMsg } from 'components/shared/styles'
-import useWindowDimensions from '@hooks/useWindowsDimensions'
+import { useWindowDimensions } from '@hooks/useWindowsDimensions'
 
 const wrapper = {
   paddingRight: 100,

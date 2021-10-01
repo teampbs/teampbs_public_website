@@ -5,7 +5,7 @@ import { colors } from 'utils/constants'
 import { languages } from 'components/SelectYourRegion/mocks'
 import { useState } from 'react'
 import { Interpolation, Theme } from '@emotion/react'
-import useWindowDimensions from '@hooks/useWindowsDimensions'
+import { useWindowDimensions } from '@hooks/useWindowsDimensions'
 
 const wrapper = {
   display: 'flex',

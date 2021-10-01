@@ -8,7 +8,7 @@ import { FC, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Flexbox from 'components/shared/Flexbox'
-import useWindowDimensions from '@hooks/useWindowsDimensions'
+import { useWindowDimensions } from '@hooks/useWindowsDimensions'
 
 const Container = styled.footer({
   display: 'flex',

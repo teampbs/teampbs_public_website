@@ -5,7 +5,7 @@ import Input from 'components/shared/Inputs/Input'
 import { Interpolation, Theme } from '@emotion/react'
 import { styles, Label, InputCustom, Button, modifyErrMsg } from 'components/shared/styles'
 import Checkbox from 'components/shared/Checkbox'
-import useWindowDimensions from '@hooks/useWindowsDimensions'
+import { useWindowDimensions } from '@hooks/useWindowsDimensions'
 
 const btnUploadStyle = { width: '12rem', margin: '-1rem 0 0 0' }
 
