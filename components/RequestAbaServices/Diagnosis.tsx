@@ -4,7 +4,7 @@ import { styles, Label, InputCustom, Button } from 'components/shared/styles'
 import { Interpolation } from '@emotion/serialize'
 import { Theme } from '@emotion/react'
 import Input from 'components/shared/Inputs/Input'
-import useWindowDimensions from 'hooks/useWindowsDimensions'
+import useWindowDimensions from '@hooks/useWindowsDimensions'
 
 const wrapper = {
   paddingRight: 100,

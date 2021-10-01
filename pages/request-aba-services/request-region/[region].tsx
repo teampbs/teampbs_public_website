@@ -8,7 +8,7 @@ import { Text, style, Info } from 'components/SelectYourRegion/styles'
 import Payment from 'components/RequestAbaServices/Payment'
 import Diagnosis from 'components/RequestAbaServices/Diagnosis'
 import Lang from 'components/RequestAbaServices/Lang'
-import useWindowDimensions from 'hooks/useWindowsDimensions'
+import useWindowDimensions from '@hooks/useWindowsDimensions'
 
 const image = {
   src: '/images/pages/RequestAbaServices/req_services_banner.png',

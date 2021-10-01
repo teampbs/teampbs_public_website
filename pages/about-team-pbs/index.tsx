@@ -7,7 +7,7 @@ import Avatar from 'components/AboutTeamPbs/Avatar'
 import ServiceSection from 'components/shared/ServiceSection'
 import Flexbox from 'components/shared/Flexbox'
 import { mq } from 'styles/styles'
-import useWindowDimensions from 'hooks/useWindowsDimensions'
+import useWindowDimensions from '@hooks/useWindowsDimensions'
 import { employees } from 'utils/mock/employees'
 
 const image = {
