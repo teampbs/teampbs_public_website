@@ -5,13 +5,15 @@ import { Box } from 'components/SelectYourRegion/styles'
 import { mq } from 'styles/styles'
 
 const containerForm = mq({
-  // paddingRight: 100,
   marginBottom: '10rem',
   width: '100%',
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
   gap: '1rem',
+  '& .tab_block': {
+    width: '100%'
+  }
 })
 
 const Form = ({ children, url }) => {

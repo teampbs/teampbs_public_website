@@ -5,9 +5,9 @@ import Button from 'components/shared/Button'
 import Logo from 'components/Header/Logo'
 import { navs } from 'components/Header/StickyNav/nav_mocks'
 import NavLink from 'components/Header/StickyNav/NavLink'
-import { style } from 'components/Header/styles'
+import { styles } from 'components/Header/styles'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
 import SideBar from 'components/Header/StickyNav/SideBar'
-import { useWindowDimensions } from '@hooks/useWindowsDimensions'
 
 interface IStickyNav {
   scrolling: boolean
@@ -16,18 +16,12 @@ interface IStickyNav {
 
 const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
   const [sidebar, setSidebar] = useState(false)
-//   const [useCustomHook, setUseCustomHook] = useState(() => () => {})
-
   const { width } = useWindowDimensions()
-
-//   useEffect(() => {
-//     loadCustomHook().then(customHook => setUseCustomHook(customHook))
-// }, [])
 
   const toggleSidebar = () => setSidebar((prev) => !prev)
 
   return (
-    <div css={scrolling ? style.fixed : style.navTrack}>
+    <div css={[width < 400 && { '& :nth-child(2)#logo_middle': { display: 'none' }}, scrolling ? styles.fixed : styles.navTrack]}>
       <Logo
         src={
           scrolling ? '/images/shared/menu_fix.png' : '/images/shared/menu.png'
@@ -47,7 +41,7 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
             ? '/images/logo_main_fix.png'
             : '/images/logo_main_hp.png'
         }
-        alt='logo'
+        alt='logo_middle'
         width={scrolling ? '185' : '250'}
         height={scrolling ? '40' : '50'}
         isScroll={scrolling}
@@ -56,7 +50,7 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
       {sidebar && (
         <SideBar width={width} setSidebar={toggleSidebar} />
       )}
-      <div css={style.navBox}>
+      <div css={styles.navBox}>
         {navs.map((link) => (
           <NavLink
             key={link.id}
@@ -70,6 +64,7 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
       <Link href='/request-aba-services'>
         <a>
           <Button isScroll={scrolling} navBtn>
+            {/* <span css={styles.btnText}>Request ABA Therapy</span> */}
             Request ABA Therapy
           </Button>
         </a>

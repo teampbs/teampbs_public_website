@@ -10,6 +10,7 @@ import TableRequestFooter from 'components/SelectYourRegion/Card/Table/TableRequ
 import TableJobFooter from 'components/SelectYourRegion/Card/Table/TableJobFooter'
 import { mq } from 'styles/styles'
 import { colors } from 'utils/constants'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
 
 const tableCss = mq({
   '& *': {
@@ -38,6 +39,7 @@ const Table: FC<{ request?: boolean }> = ({ request }) => {
   const [thursday, setThursday] = useState(false)
   const [friday, setFriday] = useState(false)
   const [markAll, setMarkAll] = useState(false)
+  const { width } = useWindowDimensions()
 
   const handleButton = (bool: boolean) => setMarkAll(bool)
 
@@ -57,7 +59,7 @@ const Table: FC<{ request?: boolean }> = ({ request }) => {
     }[day] || null)
 
   return (
-    <Flexbox col padding='2.5rem 0 0 0'>
+    <Flexbox col items='flex-start' padding='2.5rem 0 0 0'>
       {request ? (
         <TableRequestHeader handleButton={handleButton} />
       ) : (
@@ -86,7 +88,7 @@ const Table: FC<{ request?: boolean }> = ({ request }) => {
                 ]}
                 onClick={handleCheckbox(day.toLowerCase())}
               >
-                <span css={style.centering}>{day}</span>
+                <span css={style.centering}>{width < 900 ? day === 'Times' ? day : `${day.substring(0, 3)}.` : day}</span>
               </td>
             ))}
           </tr>

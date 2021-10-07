@@ -3,9 +3,18 @@ import Flexbox from 'components/shared/Flexbox'
 import { Text, style, Info } from 'components/SelectYourRegion/styles'
 import Input from 'components/shared/Inputs/Input'
 import { Interpolation, Theme } from '@emotion/react'
-import { styles, Label, InputCustom, Button, modifyErrMsg } from 'components/shared/styles'
+import {
+  styles,
+  Label,
+  InputCustom,
+  Button,
+  modifyErrMsg,
+  Btn,
+  stepControls,
+} from 'components/shared/styles'
 import Checkbox from 'components/shared/Checkbox'
-import { useWindowDimensions } from '@hooks/useWindowsDimensions'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
+import { mq } from 'styles/styles'
 
 const btnUploadStyle = { width: '12rem', margin: '-1rem 0 0 0' }
 
@@ -87,19 +96,20 @@ const disclaimer = {
   textAlign: 'left',
 } as Interpolation<Theme>
 
-const tabs = {
+const tabs = mq({
   display: 'flex',
-}
+  flexDirection: ['column', 'column', 'row', 'row'],
+})
 
-const tabStyle = {
-  padding: '1rem 2rem',
+const tabStyle = mq({
+  padding: ['1rem 0', '1rem 0', '1rem 2rem', '1rem 2rem'],
   border: '1px solid #d8e7f3',
   background: '#eff1f3',
   color: '#898e95',
   fontFamily: `"Open Sans",sans-serif`,
   cursor: 'pointer',
   transition: 'all 0.3s',
-}
+})
 
 const item = {
   padding: '.3rem',
@@ -116,7 +126,7 @@ const tabIds = [
   { id: 3, name: 'Private Pay' },
 ]
 
-const Payment = () => {
+const Payment = ({ setStep }) => {
   const [active, setActive] = useState(3)
   const [consent, setConsent] = useState(1)
   const [insurance, setInsurance] = useState(2)
@@ -124,7 +134,12 @@ const Payment = () => {
   const { width } = useWindowDimensions()
 
   return (
-    <div css={[style.card_wrapper, width < 900 && { flexDirection: 'column', top: 50, borderRadius: 5 }]}>
+    <div
+      css={[
+        style.card_wrapper,
+        width < 900 && { flexDirection: 'column', top: 50, borderRadius: 5 },
+      ]}
+    >
       {width < 900 && (
         <div css={{ display: 'flex' }}>
           <div css={[style.circle, { left: 20 }]}>4</div>
@@ -133,13 +148,13 @@ const Payment = () => {
               <h3 css={style.heading}>Payment Source</h3>
               <Text>How would you like to pay for services?</Text>
             </Info>
-            {active === 2 && (
+            {/* {active === 2 && (
               <Info>
                 <h3 css={style.heading}>Card Upload</h3>
                 <Text>Upload your card images</Text>
               </Info>
-            )}
-          </div> 
+            )} */}
+          </div>
         </div>
       )}
       {width > 900 && (
@@ -153,30 +168,59 @@ const Payment = () => {
       )}
       <div css={[wrapper, { padding: 0 }]}>
         <Flexbox
-          items='flex-end'
+          items={width > 900 ? 'flex-end' : 'flex-start'}
           justify=''
           col
           gap='0.5rem'
           css={{ color: 'rgba(36,44,55,.65)' }}
         >
-          <div css={[tabs, { justifyContent: 'flex-end' }]}>
-            <p css={{ padding: '1rem' }}>Select source</p>
-            <div css={{ display: 'flex' }}>
+          <div
+            className='tab_block'
+            css={[
+              tabs,
+              mq({
+                justifyContent: [
+                  'center',
+                  'center',
+                  'flex-end',
+                  'flex-end',
+                ],
+                alignItems: ['center', 'center', 'center', 'center'],
+              }),
+            ]}
+          >
+            <p css={mq({ padding: ['1rem 0', '1rem 0', '1rem', '1rem'] })}>Select source</p>
+            <div
+              css={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+              }}
+            >
               {tabIds.map(({ id, name }, index) => (
                 <div
                   key={index}
-                  css={[tabStyle, {width: '10.8rem'}, active === id && activeTab]}
+                  css={[
+                    tabStyle,
+                    width > 600 ? { width: '10.8rem' } : { width: 'calc(30vw - 2rem)' },
+                    active === id && activeTab,
+                  ]}
                   id={`tab_id_${id}`}
                   onClick={() => setActive(id)}
                 >
-                  <span>{name}</span>
+                  <span css={mq({ fontSize: ['12px', '12px', '15px', '15px'] })}>{name}</span>
                 </div>
               ))}
             </div>
           </div>
           {active === 1 && (
             <>
-              <Input injectCss={{ '& #req_ins_medicaid': { width: '22rem' }}} label='Medicaid #' id='req_ins_medicaid' />
+              <Input
+                injectCss={{ '& #req_ins_medicaid': { width: '22rem' } }}
+                label='Medicaid #'
+                id='req_ins_medicaid'
+              />
               <Flexbox justify='' items='center'>
                 <p
                   css={{
@@ -190,11 +234,7 @@ const Payment = () => {
                 {lnIds.map(({ id, name }, index) => (
                   <div
                     key={index}
-                    css={[
-                      tabStyle,
-                      consentTabs,
-                      consent === id && activeTab,
-                    ]}
+                    css={[tabStyle, consentTabs, consent === id && activeTab]}
                     id={`tab_id_${id}`}
                     onClick={() => setConsent(id)}
                   >
@@ -236,10 +276,27 @@ const Payment = () => {
               {/* <p css={{ padding: '1rem' }}>Insurance</p> */}
               <div css={insuranceBox}>
                 <Input label='Company Name' id='req_ins_company_name' />
-                <Input injectCss={[modifyErrMsg, { '& .errMsg': { marginLeft: '11.5rem' } }]} label='Card Holder Name' id='req_ins_card_holder_name' />
-                <Input injectCss={[modifyErrMsg, { '& .errMsg': { marginLeft: '11.5rem' } }]} label='Date of Birth' id='req_ins_date_of_birth' />
                 <Input
-                injectCss={[modifyErrMsg, { '& .errMsg': { marginLeft: '11.5rem' } }]}
+                  injectCss={[
+                    modifyErrMsg,
+                    { '& .errMsg': { marginLeft: '11.5rem' } },
+                  ]}
+                  label='Card Holder Name'
+                  id='req_ins_card_holder_name'
+                />
+                <Input
+                  injectCss={[
+                    modifyErrMsg,
+                    { '& .errMsg': { marginLeft: '11.5rem' } },
+                  ]}
+                  label='Date of Birth'
+                  id='req_ins_date_of_birth'
+                />
+                <Input
+                  injectCss={[
+                    modifyErrMsg,
+                    { '& .errMsg': { marginLeft: '11.5rem' } },
+                  ]}
                   label='Last 4 digit of insured SSN'
                   id='req_ins_digit'
                   type='number'
@@ -249,7 +306,15 @@ const Payment = () => {
                   id='req_ins_member_number'
                   type='number'
                 />
-                <Input injectCss={[modifyErrMsg, { '& .errMsg': { marginLeft: '11.5rem' } }]} label='Group Number' id='req_ins_digit' type='number' />
+                <Input
+                  injectCss={[
+                    modifyErrMsg,
+                    { '& .errMsg': { marginLeft: '11.5rem' } },
+                  ]}
+                  label='Group Number'
+                  id='req_ins_digit'
+                  type='number'
+                />
                 <Flexbox justify='' items=''>
                   <p css={insuranceStyle}>Do you have secondary insurance?</p>
                   {lnIds.map(({ id, name }, index) => (
@@ -270,19 +335,16 @@ const Payment = () => {
                 </Flexbox>
                 {insurance === 1 && (
                   <>
+                    <Input label='Company Name' id='req_ins_add_company_name' />
                     <Input
-                    label='Company Name'
-                    id='req_ins_add_company_name'
+                      label='Member Number'
+                      id='req_ins_add_member_number'
+                      type='number'
                     />
                     <Input
-                    label='Member Number'
-                    id='req_ins_add_member_number'
-                    type='number'
-                    />
-                    <Input
-                    label='Group Number'
-                    id='req_ins_add_group_number'
-                    type='number'
+                      label='Group Number'
+                      id='req_ins_add_group_number'
+                      type='number'
                     />
                   </>
                 )}
@@ -291,26 +353,33 @@ const Payment = () => {
                 <div css={uplInp}>
                   <Label htmlFor='front_card'>Front of the card</Label>
                   <InputCustom id='front_card' type='file' />
-                  <Button css={btnUploadStyle}>
-                    + Click To Upload
-                  </Button>
+                  <Button css={btnUploadStyle}>+ Click To Upload</Button>
                 </div>
                 <div css={uplInp}>
                   <Label htmlFor='back_card'>back of the card</Label>
                   <InputCustom id='back_card' type='file' />
-                  <Button css={btnUploadStyle}>
-                    + Click To Upload
-                  </Button>
+                  <Button css={btnUploadStyle}>+ Click To Upload</Button>
                 </div>
               </div>
               <p css={{ marginTop: '.5rem', '& ~ div': { margin: '2rem 0' } }}>
                 If your card is on a single image please upload it in both
                 places.
               </p>
-              <Checkbox id='req_check_payment' label='If you are unable to upload an image, please check this box and we will get in touch with you to help.' />
+              <Checkbox
+                id='req_check_payment'
+                label='If you are unable to upload an image, please check this box and we will get in touch with you to help.'
+              />
             </div>
           )}
         </Flexbox>
+        {width < 900 && (
+          <div css={stepControls}>
+            <Btn inverse onClick={() => setStep(3)}>
+              Previous
+            </Btn>
+            <Btn onClick={() => setStep(5)}>Next</Btn>
+          </div>
+        )}
       </div>
     </div>
   )

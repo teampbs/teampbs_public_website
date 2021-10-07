@@ -1,8 +1,10 @@
 import SignaturePad from 'react-signature-canvas'
 
 import { style } from 'components/SelectYourRegion/styles'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
 
 const SignatureBox = () => {
+  const { width } = useWindowDimensions()
   let sigPad = {}
 
   const onClear = (e) => {
@@ -13,7 +15,7 @@ const SignatureBox = () => {
   }
 
   return (
-    <div css={style.authorization.box}>
+    <div css={[style.authorization.box, width < 900 && { width: '100%', '& *': { width: '100%'}}]}>
       <div css={style.authorization.sigWrap}>
         <p css={style.authorization.draw}>Draw Your Signature</p>
         <SignaturePad

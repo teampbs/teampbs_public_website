@@ -5,7 +5,9 @@ import { colors } from 'utils/constants'
 import { languages } from 'components/SelectYourRegion/mocks'
 import { useState } from 'react'
 import { Interpolation, Theme } from '@emotion/react'
-import { useWindowDimensions } from '@hooks/useWindowsDimensions'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
+import { Btn, stepControls } from 'components/shared/styles'
+import { mq } from 'styles/styles'
 
 const wrapper = {
   display: 'flex',
@@ -34,8 +36,8 @@ const activeTab = {
   color: '#48b2f4',
 }
 
-const tabStyle = {
-  padding: '1rem 2rem',
+const tabStyle = mq({
+  padding: ['.5rem 1rem', '.5rem 1rem', '1rem 2rem', '1rem 2rem'],
   border: '1px solid #d8e7f3',
   background: '#eff1f3',
   color: '#898e95',
@@ -44,7 +46,7 @@ const tabStyle = {
   width: '100%',
   transition: 'all 0.3s',
   textAlign: 'center',
-}
+})
 
 const label = {
   textAlign: 'right',
@@ -54,7 +56,7 @@ const label = {
   width: '120%',
 } as Interpolation<Theme>
 
-const Lang = () => {
+const Lang = ({ setStep }) => {
   const [active, setActive] = useState(1)
 
   const { width } = useWindowDimensions()
@@ -80,8 +82,8 @@ const Lang = () => {
         </>
       )}
       <div css={wrapper}>
-        <Flexbox justify='' items=''>
-          <p css={{ padding: '1rem', whiteSpace: 'nowrap' }}>Select language</p>
+        <Flexbox col={width < 500} justify='' items=''>
+          <p css={[{ padding: '1rem', whiteSpace: 'nowrap', color: colors.textGray }, width < 500 && { textAlign: 'center' }]}>Select language</p>
           {tabIds.map(({ id, name }, index) => (
             <div
               key={index}
@@ -94,7 +96,7 @@ const Lang = () => {
           ))}
         </Flexbox>
         {active === 2 && (
-          <div css={[selectWrap, mb]}>
+          <div css={[selectWrap, mb, width < 500 && { flexDirection: 'column', gap: '1rem', marginTop: '2rem' }]}>
             <label
               css={label}
               htmlFor='req_parent_county'
@@ -102,6 +104,12 @@ const Lang = () => {
               What is your primary Language spoken?
             </label>
             <Select id='req_parent_county' list={languages} margin='0' />
+          </div>
+        )}
+        {width < 900 && (
+          <div css={stepControls}>
+            <Btn inverse onClick={() => setStep(5)}>Previous</Btn>
+            <Btn css={{ visibility: 'hidden' }} />
           </div>
         )}
       </div>

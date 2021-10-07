@@ -8,6 +8,7 @@ import Qualification from 'components/SelectYourRegion/Field/Qualification'
 import Select from 'components/shared/Inputs/Select'
 import { IField } from 'interfaces'
 import { requiredInputs } from 'utils/mock/validation'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
 
 const inputWrap = {
   display: 'flex',
@@ -15,6 +16,18 @@ const inputWrap = {
   width: '100%',
   alignItems: 'flex-start',
 } as Interpolation<Theme>
+
+const inpHalfWidth = [
+  'MI',
+  'date_birth',
+  'date_app',
+  'unit',
+  'city',
+  // 'state',
+  // 'county',
+  'phone',
+  'available',
+]
 
 const Field: FC<Partial<IField>> = ({
   width,
@@ -33,17 +46,18 @@ const Field: FC<Partial<IField>> = ({
     register,
     formState: { errors },
   } = useFormContext()
+  const { width: screenWidth } = useWindowDimensions()
 
   return (
     <FormGroup
       align='flex-start'
-      className={id === 'zip' && 'relative'}
+      className={id === 'zip' && screenWidth > 900 && 'relative'}
       just={id === 'zip' && 'flex-end'}
-      width={id === 'zip' ? '40%' : '100%'}
-      css={(errors.city && id === 'zip') ? { top: -82, left: 250 } : id === 'zip' && { top: -55, left: 250 }}
+      width={id === 'zip' && screenWidth > 900 ? '40%' : '100%'}
+      css={[screenWidth < 900 && { flexDirection: 'column' }, (errors.city && id === 'zip') ? { top: -82, left: 250 } : id === 'zip' && { top: -55, left: 250 }]}
     >
       <Label
-        css={{ marginTop: '.8rem' }}
+        css={[screenWidth < 900 && { minWidth: 0 }, { marginTop: '.8rem' }]}
         className={id === 'qualification' && 'align-self-start'}
         htmlFor={id}
         width={labelWidth}
@@ -59,7 +73,7 @@ const Field: FC<Partial<IField>> = ({
           css={inputWrap}
         >
           <Input
-            width={id === 'zip' ? '40%' : width}
+            width={id === 'zip' ? screenWidth < 900 ? '100%' : '40%' : screenWidth < 900 && inpHalfWidth.includes(id) ? '100%' : width}
             id={id}
             name={id}
             type={type}

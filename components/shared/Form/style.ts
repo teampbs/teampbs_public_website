@@ -80,7 +80,7 @@ export const style = {
       display: 'flex',
       flexDirection: 'column',
       margin: '0 0 2rem 0',
-      '& tr:nth-child(odd)': {
+      '& tr:nth-of-type(odd)': {
         background: '#F8FCFC',
       },
     } as Interpolation<Theme>,

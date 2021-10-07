@@ -28,7 +28,7 @@ const menuStyle = {
 }
 
 const Logo: FC<ILogo> = ({ src, alt, width, height, isLogo, isScroll, link, setSidebar }) => (
-  <Frame css={mq(isLogo ? (isScroll ? logoStyleFix : logoStyle) : menuStyle)} onClick={!isLogo ? setSidebar : null}>
+  <Frame id='logo_middle' css={mq(isLogo ? (isScroll ? logoStyleFix : logoStyle) : menuStyle)} onClick={!isLogo ? setSidebar : null}>
     {link ? (
       <Link href={link}>
         <a>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import Layout from 'components/Layout/Layout'
@@ -6,6 +6,8 @@ import Card from 'components/SelectYourRegion/Card/Card'
 import { colors } from 'utils/constants'
 import { cards } from 'utils/mock/cards'
 import Form from 'components/shared/Form/Form'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
+import Stepper from 'components/shared/Form/Stepper'
 
 const metaDesc = {
   name: 'description',
@@ -29,14 +31,17 @@ const metaDesc = {
 // }
 
 const URL = 'http://localhost:3000/api/application'
-const capitalize = (name: string) => name?.charAt(0).toUpperCase() + name?.slice(1)
+const capitalize = (name: string) =>
+  name?.charAt(0).toUpperCase() + name?.slice(1)
 
 const Region: FC = () => {
   const router = useRouter()
   const { id } = router.query
+  const { width } = useWindowDimensions()
+  const [step, setStep] = useState(1)
 
   const text = {
-    title: `Join Our Team in ${capitalize(''+id)}`,
+    title: `Join Our Team in ${capitalize('' + id)}`,
     subtitle: 'Team PBS Service Provider Application',
     description: `Positive Behavior Supports Corporation (”PBS”) is an equal opportunity employer and does not discriminate on the basis of race, color, religion, sex, pregnancy, sexual orientation, national origin, age, disability, genetic information, veteran or other protected status.`,
   }
@@ -52,8 +57,17 @@ const Region: FC = () => {
       text={text}
       height='600px'
     >
+      {width < 900 && <Stepper isJobForm step={step} limit={9} />}
       <Form url={URL}>
-        {React.Children.toArray(cards.map((props) => <Card {...props} />))}
+        {React.Children.toArray(
+          cards.map((props) =>
+            width < 900 ? (
+              step === props.num && <Card {...props} setStep={setStep} />
+            ) : (
+              <Card {...props} setStep={setStep} />
+            )
+          )
+        )}
       </Form>
     </Layout>
   )

@@ -47,7 +47,7 @@ export const style = {
       flexDirection: 'column',
       margin: '0 0 2rem 0',
       border: '1px solid #ddd',
-      '& tr:nth-child(odd)': {
+      '& tr:nth-of-type(odd)': {
         background: '#F8FCFC',
       },
     } as Interpolation<Theme>,
@@ -104,12 +104,12 @@ export const style = {
       outline: 'none',
       cursor: 'pointer',
     } as Interpolation<Theme>,
-    checkLabel: {
-      padding: '1.25rem 0',
+    checkLabel: mq({
+      padding: ['0', '0', '1.25rem 0', '1.25rem 0'],
       width: '4rem',
       color: colors.textGray,
       paddingRight: 20,
-    },
+    }),
   },
   circle: {
     display: 'flex',
@@ -152,9 +152,9 @@ export const style = {
       height: 18,
       width: 18,
       margin: '0 auto',
-      position: 'absolute', 
-      top: '50%', 
-      left: '50%', 
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
       transform: 'translate(-50%, -50%)'
     }
   } as Interpolation<Theme>,
@@ -218,7 +218,13 @@ export const style = {
     date: { textAlign: 'right' } as Interpolation<Theme>,
     cardFooter: { display: 'flex', justifyContent: 'space-between', fontWeight: 700 },
   },
-  recaptchaWrapper: { flexDirection: 'row', gap: '1rem', alignItems: 'baseline', width: '30rem', '& > p': { paddingLeft: '1rem', borderLeft: '2px solid #666' } } as Interpolation<Theme>,
+  recaptchaWrapper: mq({
+    display: 'inline-flex',
+    flexDirection: 'row',
+    width: '100%', gap: '1rem',
+    margin: ['0 0 3rem 0', '0 0 3rem 0', '0 0 3rem 3.5rem', '0 0 3rem 3.5rem'],
+    alignItems: 'baseline', '& > p': { paddingLeft: '1rem', borderLeft: '2px solid #666' }
+  }) as Interpolation<Theme>,
 }
 
 export const Box = styled.div({

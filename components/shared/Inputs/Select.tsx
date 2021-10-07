@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { SelectWrap, SelectField } from 'components/shared/styles'
 import { requiredInputs } from 'utils/mock/validation'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
 
 const Select: FC<{
   id: string
@@ -15,9 +16,9 @@ const Select: FC<{
     register,
     formState: { errors },
   } = useFormContext()
-
+  const { width } = useWindowDimensions()
   return (
-    <SelectWrap css={((errors.degrees && id === 'degrees') || (errors.county && id === 'county')) && { flexDirection: 'column', gap: '.5rem', alignItems: 'flex-start'}} margin={margin} half={half}>
+    <SelectWrap css={[width < 900 && { width: '100%' }, ((errors.degrees && id === 'degrees') || (errors.county && id === 'county')) && { flexDirection: 'column', gap: '.5rem', alignItems: 'flex-start'}]} margin={margin} half={half}>
       <SelectField
         name={id}
         className={half && 'px-2'}

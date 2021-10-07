@@ -1,10 +1,18 @@
 import Flexbox from 'components/shared/Flexbox'
 import { Text, style, Info } from 'components/SelectYourRegion/styles'
-import { styles, Label, InputCustom, Button } from 'components/shared/styles'
+import {
+  styles,
+  Label,
+  InputCustom,
+  Button,
+  Btn,
+  stepControls,
+} from 'components/shared/styles'
 import { Interpolation } from '@emotion/serialize'
 import { Theme } from '@emotion/react'
-import Input from 'components/shared/Inputs/Input'
-import { useWindowDimensions } from '@hooks/useWindowsDimensions'
+// import Input from 'components/shared/Inputs/Input'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
+import { mq } from 'styles/styles'
 
 const wrapper = {
   paddingRight: 100,
@@ -24,17 +32,20 @@ const text = {
   bottom: 80,
   left: '50%',
   transform: 'translateX(-50%)',
+  width: '100%',
+  textAlign: 'center',
 } as Interpolation<Theme>
 
-const btn = {
+const btn = mq({
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translateX(-50%)',
-  width: '20rem',
-} as Interpolation<Theme>
+  width: ['calc(90% - 1rem)', '20rem', '20rem', '20rem'],
+  whiteSpace: 'nowrap',
+}) as Interpolation<Theme>
 
-const Diagnosis = () => {
+const Diagnosis = ({ setStep }) => {
   const { width } = useWindowDimensions()
 
   return (
@@ -63,14 +74,14 @@ const Diagnosis = () => {
         </>
       )}
       <div css={[wrapper, { padding: 0 }]}>
-        <Flexbox col items='flex-end' gap='1rem'>
+        <Flexbox col items={width < 900 ? 'stretch' : 'flex-end'} gap='1rem'>
           <div css={uplInp}>
             <Label htmlFor='diagnosis '></Label>
             <InputCustom id='diagnosis' type='file' />
             <Button css={btn}>+ Click To Upload</Button>
             <p css={text}>One or more diagnosis images</p>
           </div>
-          <Input
+          {/* <Input
             nowrap
             injectCss={{ '& input': { width: '20rem' } }}
             label='Name of the doctor that diagnosed your child'
@@ -81,8 +92,16 @@ const Diagnosis = () => {
             injectCss={{ '& input': { width: '20rem' } }}
             label='Date of Diagnosis'
             id='req_diagnosis'
-          />
+          /> */}
         </Flexbox>
+        {width < 900 && (
+          <div css={stepControls}>
+            <Btn inverse onClick={() => setStep(4)}>
+              Previous
+            </Btn>
+            <Btn onClick={() => setStep(6)}>Next</Btn>
+          </div>
+        )}
       </div>
     </div>
   )

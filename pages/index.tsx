@@ -20,7 +20,7 @@ const metaDesc: IMeta = {
 }
 
 const MapSection = dynamic(() => import('components/shared/MapSection/MapSection'))
-const Presentation = dynamic(() => import('components/Index/Presentation/Presentation'))
+const Presentation = dynamic(() => import('components/Index/Presentation/Presentation'));
 
 const Index = () => (
   <Layout meta={metaDesc} video text={text}>

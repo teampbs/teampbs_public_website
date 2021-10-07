@@ -1,4 +1,4 @@
-import { CSSObject, Interpolation, Theme } from '@emotion/react'
+import { Interpolation, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { mq } from 'styles/styles'
@@ -97,7 +97,50 @@ export const styles = {
         transition: '1s',
       },
     } as Interpolation<Theme>
-  } 
+  },
+  navBox: {
+    display: 'flex',
+    margin: ' 0 auto 0 -2rem',
+  },
+  fixed: mq({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '70px',
+    background: colors.white,
+    color: colors.black00,
+    padding: ['1.5rem .5rem', '1.5rem .5rem', '2.5rem 3rem', '2.5rem 3rem'],
+    width: '100%',
+    position: 'fixed',
+    zIndex: 150,
+    transitionProperty: `background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)`,
+    transitionDuration: '150ms',
+    boxShadow: '0px 7px 12px rgb(100 100 100 / 10%)',
+    top: 0,
+    '& button': mq({
+      fontSize: ['12px', '12px', '15px', '15px'],
+      width: ['40px', '40px', '100%', '100%'],
+      height: ['30px', '36px', '46px', '46px']
+    })
+  }),
+  navTrack: mq({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    top: ['1.5rem', '1.5rem', '3rem', '3rem'],
+    padding: ['0 .5rem', '0 .5rem', '0 3rem', '0 3rem'],
+    height: '2rem',
+    '& button': mq({
+      fontSize: ['12px', '12px', '15px', '15px'],
+      width: ['40px', '40px', '100%', '100%'],
+      height: ['30px', '36px', '46px', '46px']
+    })
+  }),
+  btnText: mq({
+    fontSize: ['12px', '15px', '15px', '15px']
+  })
 }
 
 export const Box = styled.div<{ bg?: boolean }>(({ bg }) => ({
@@ -118,7 +161,7 @@ export const Heading = styled.header<{ height: string, bg: string, black: boolea
   left: '0',
   color: props.black ? colors.black00 : colors.white,
   background: props.bg,
-  height: props.height
+  height: props.height,
 }))
 
 export const HeadingImgMq = mq({
@@ -176,45 +219,4 @@ export const Disclaimer = styled.p<{ fs?: string; mw?: string; m?: string }>(
   })
 )
 
-export const style: CSSObject = {
-  navBox: {
-    display: 'flex',
-    margin: ' 0 auto 0 -2rem',
-  },
-  fixed: mq({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '70px',
-    background: colors.white,
-    color: colors.black00,
-    padding: ['1.5rem .5rem', '1.5rem .5rem', '2.5rem 3rem', '2.5rem 3rem'],
-    width: '100%',
-    position: 'fixed',
-    zIndex: 50,
-    transitionProperty: `background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)`,
-    transitionDuration: '150ms',
-    boxShadow: '0px 7px 12px rgb(100 100 100 / 10%)',
-    top: 0,
-    '& button': mq({
-      fontSize: ['12px', '12px', '15px', '15px'],
-      width: ['40px', '40px', '100%', '100%'],
-      height: ['30px', '36px', '46px', '46px']
-    })
-  }),
-  navTrack: mq({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    top: ['1.5rem', '1.5rem', '3rem', '3rem'],
-    padding: ['0 .5rem', '0 .5rem', '0 3rem', '0 3rem'],
-    height: '2rem',
-    '& button': mq({
-      fontSize: ['12px', '12px', '15px', '15px'],
-      width: ['40px', '40px', '100%', '100%'],
-      height: ['30px', '36px', '46px', '46px']
-    })
-  })
-}
+export const c = mq({ fontSize: ['12px', '12px', '15px', '15px'] })

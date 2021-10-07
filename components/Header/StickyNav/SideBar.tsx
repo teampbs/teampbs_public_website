@@ -43,21 +43,21 @@ const sidebarStyle = mq({
   padding: '2rem 1rem',
   display: 'flex',
   flexDirection: 'column',
-  zIndex: 10,
+  zIndex: 100,
   position: 'fixed',
   inset: 0,
   backgroundColor: 'white',
-  width: 350,
-  height: '100vh',
+  width: ['100%', 350, 350, 350],
+  height: '100%',
 }) as Interpolation<Theme>
 
 const closeIcon = {
   position: 'absolute',
   top: 45,
-  left: '300px',
-  width: '100%',
-  height: '100%',
-  background: 'url(images/close.png) no-repeat',
+  right: 45,
+  width: '20px',
+  height: '20px',
+  background: 'url(/images/close.png) no-repeat',
   backgroundSize: '20px 20px',
   cursor: 'pointer',
 } as Interpolation<Theme>
@@ -68,6 +68,7 @@ const sidebarContent = {
   color: 'rgba(36, 44, 55, 0.75)',
   height: '100%',
   width: '100%',
+  zIndex: 999,
   '& .sidebar_css': {
     paddingLeft: '1.5rem',
   }

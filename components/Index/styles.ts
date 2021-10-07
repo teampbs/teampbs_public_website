@@ -98,22 +98,23 @@ export const box = mq({
   display: 'flex',
   flexDirection: ['column', 'row', 'row', 'row'],
   alignItems: ['center'],
-  padding: ['0 7rem 2rem 7rem', '0 0 0 0', '0 0 2rem 0', '0 0 2rem 0'],
+  padding: ['2rem 0', '0 0 0 0', '0 0 2rem 0', '0 0 2rem 0'],
 })
 
-export const Frame = styled.div({
+export const frame = mq({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   background: colors.blueMild,
   borderRadius: '100%',
-  margin: '1rem 1rem 0 0',
-  padding: '1rem',
+  margin: ['0', '1rem 1rem 0 0', '1rem 1rem 0 0', '1rem 1rem 0 0'],
+  padding: ['0', '1rem', '1rem', '1rem'],
 })
 
-export const AboutTitle = styled.h4({
-  marginTop: '1rem',
+export const aboutTitle = mq({
+  marginTop: ['2rem', '1rem', '1rem', '1rem'],
   width: '100%',
+  textAlign: ['center', 'left', 'left', 'left'],
 })
 
 export const AnchorLink = styled.a({

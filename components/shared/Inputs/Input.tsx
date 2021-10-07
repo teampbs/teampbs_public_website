@@ -4,7 +4,7 @@ import { ErrorMessage } from '@hookform/error-message'
 
 import { InputLabel, InputCustom, FormGroup } from 'components/shared/styles'
 import { requiredInputs } from 'utils/mock/validation'
-import { useWindowDimensions } from '@hooks/useWindowsDimensions'
+import useWindowDimensions from 'hooks/useWindowsDimensions'
 
 interface IInput {
   type: string

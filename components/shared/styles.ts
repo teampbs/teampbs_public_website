@@ -39,6 +39,10 @@ export const styles = {
     color: colors.textGray,
     whiteSpace: 'nowrap',
   } as Interpolation<Theme>,
+  nowrap: {
+    whiteSpace: 'normal',
+    textAlign: 'left',
+  } as Interpolation<Theme>,
   labelStyle: {
     textAlign: 'left',
     width: '80%',
@@ -78,11 +82,11 @@ export const styles = {
     top: -15,
     paddingBottom: 10,
     paddingRight: 34,
-  
+
     '@media only screen and (max-width: 768px)': {
       marginTop: 5,
     },
-  
+
     '@media only screen and (max-width: 500px)': {
       margin: '0 auto',
       float: 'unset',
@@ -185,7 +189,25 @@ export const SelectField = styled.select({
   width: '100%',
   textAlign: 'left',
   outline: 'none',
+  // remove default icon
+  position: 'relative',
+  appearance: 'none',
+  '-webkit-appearance': 'none',
+  '-moz-appearance': 'none',
 })
+
+export const stepControls = {
+  position: 'relative', marginTop: '3rem', padding: '30px 0', display: 'flex', justifyContent: 'space-between', gap: '2rem', '& > *': { width: '100%' }, ':after': {
+    content: "''",
+    position: 'absolute',
+    top: 0,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    background: '#eff1f5',
+    width: '90vw',
+    height: 1,
+  }
+} as Interpolation<Theme>
 
 export const Btn = styled.button<{ inverse?: boolean, padding?: string, width?: string, height?: string }>(props => ({
   fontSize: 15,
@@ -198,13 +220,13 @@ export const Btn = styled.button<{ inverse?: boolean, padding?: string, width?: 
   borderRadius: 46,
   height: props.height || 46,
   border: props.inverse ? `1px solid ${colors.lightBlue}` : 'none',
-  color: props.inverse? colors.lightBlue : colors.white,
+  color: props.inverse ? colors.lightBlue : colors.white,
   cursor: 'pointer',
   transition: 'background 1s',
   whiteSpace: 'nowrap',
   outline: 'none',
   ':hover': {
-    background: props.inverse? colors.white : colors.hoverBlue
+    background: props.inverse ? colors.white : colors.hoverBlue
   },
   ':focus': {
     outline: 'none'

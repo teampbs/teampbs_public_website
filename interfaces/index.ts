@@ -58,6 +58,7 @@ export interface ICard {
   require?: boolean
   submit?: boolean
   register?: any
+  setStep?: any
 }
 
 export interface IDropDownLink {

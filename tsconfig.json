@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "@hooks/*": ["hooks/*"],
-    },
+    // "paths": {
+    //   "@/common/*": ["components/common/*"],
+    //   "@/Sections/*": ["components/Sections/*"],
+    //   "@/layouts/*": ["components/layouts/*"],
+    //   "@/Buttons/*": ["components/Buttons/*"]
+    // },
     "allowJs": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
