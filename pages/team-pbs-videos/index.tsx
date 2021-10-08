@@ -39,7 +39,6 @@ const PBSVideos = () => {
         css={{ flexWrap: 'wrap' }}
       >
         {videos.map(({ id, title, url, date }) => (
-          // <VideoPlayer {...video} />
           <Flexbox
             key={id}
             justify=''

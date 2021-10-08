@@ -1,11 +1,11 @@
 import Link from 'next/link'
+import useInView from 'react-cool-inview'
+import dynamic from 'next/dynamic'
 
 import Button from 'components/shared/Button'
 import {
   style
 } from 'components/Index/styles'
-import dynamic from 'next/dynamic'
-import useInView from 'react-cool-inview'
 
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
 
