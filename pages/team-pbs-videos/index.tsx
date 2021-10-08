@@ -6,7 +6,7 @@ import { IMeta } from 'interfaces'
 import { colors } from 'utils/constants'
 import { videos } from 'utils/mock/videos'
 
-const VideoPlayer = dynamic(() => import('components/shared/TeamPbsVideos/VideoPlayer'))
+const VideoPlayer = dynamic(() => import('components/shared/TeamPbsVideos/VideoPlayer'), { ssr: false })
 
 const text = {
   title: 'Join Our Team',
