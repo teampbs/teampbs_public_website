@@ -60,13 +60,13 @@ const navLinks = mq({
   fontSize: '15px',
   '& > li': {
     padding: '8px 15px 8px 0',
-  }
+  },
 })
 
 const copyrightStyle = mq({
   color: colors.textGray,
   fontSize: '13px',
-  textAlign: ['center', 'center', 'left', 'left']
+  textAlign: ['center', 'center', 'left', 'left'],
 })
 
 const Controller = mq({
@@ -85,6 +85,9 @@ const Controller = mq({
       background: '#d7d9db',
     },
   },
+  '& #logo_middle': {
+    opacity: 0.25,
+  },
   flexDirection: ['column', 'column', 'row', 'row'],
 })
 
@@ -92,10 +95,10 @@ const buttons = [
   { title: 'Find RBT Training', src: '/images/nav_docs_dark.png', alt: 'docs' },
   {
     title: 'Parent Portal Login',
-    src: '/images/nav_profile.png',
+    src: '/images/nav_profile_dark.png',
     alt: 'portal',
   },
-  { title: 'Team PBS login', src: '/images/nav_profile.png', alt: 'docs' },
+  { title: 'Team PBS login', src: '/images/nav_profile_dark.png', alt: 'docs' },
 ]
 
 const LinkList: FC<{ url: string }> = ({ children, url }) => (
@@ -118,18 +121,14 @@ const customerLinks = (
     <LinkList url='/policies'>Refund policy</LinkList>
     <LinkList url='/policies'>Terms of use</LinkList>
     <LinkList url='/policies'>Privacy policy</LinkList>
-    <LinkList url='/policies'>
-      HIPAA Notice of privacy practices
-    </LinkList>
+    <LinkList url='/policies'>HIPAA Notice of privacy practices</LinkList>
   </>
 )
 
 const aboutLinks = (
   <>
     <LinkList url='/about-team-pbs'>About PBS Corporation</LinkList>
-    <LinkList url='/what-is-applied-behavior-analysis'>
-      About ABA
-    </LinkList>
+    <LinkList url='/what-is-applied-behavior-analysis'>About ABA</LinkList>
     <LinkList url='/team-pbs-videos'>Company Videos</LinkList>
     <LinkList url='/contact/region'>Contact Us</LinkList>
     <LinkList url='/resource-center'>Resources</LinkList>
@@ -146,9 +145,7 @@ const contactLinks = (
 const therapyLinks = (
   <>
     <LinkList url='/aba-services'>Eligibility</LinkList>
-    <LinkList url='/request-aba-services'>
-      Request ABA Therapy
-    </LinkList>
+    <LinkList url='/request-aba-services'>Request ABA Therapy</LinkList>
   </>
 )
 
@@ -254,22 +251,26 @@ const Footer = () => {
                   gap='2rem'
                   margin='1rem 0'
                   css={{
-                    '& img': { filter: 'grayscale(1) brightness(2)' },
-                    '& img:hover': { filter: 'grayscale(1) brightness(1.5)' },
+                    '& a': { filter: 'grayscale(1) brightness(2)' },
+                    '& a:hover': { transition: 'all .3s linear', filter: 'grayscale(1) brightness(1.5)' },
                   }}
                 >
-                  <Image
-                    src='/images/fb.png'
-                    alt='docs'
-                    width={12}
-                    height={24}
-                  />
-                  <Image
-                    src='/images/in.png'
-                    alt='docs'
-                    width={21}
-                    height={24}
-                  />
+                  <a href='https://www.facebook.com/pbscorp/'>
+                    <Image
+                      src='/images/fb.png'
+                      alt='docs'
+                      width={12}
+                      height={24}
+                    />
+                  </a>
+                  <a href='https://www.linkedin.com/company/positive-behavior-supports-corp-/'>
+                    <Image
+                      src='/images/in.png'
+                      alt='docs'
+                      width={21}
+                      height={24}
+                    />
+                  </a>
                 </Flexbox>
               </Flexbox>
             </li>
@@ -278,8 +279,19 @@ const Footer = () => {
         <div css={Controller}>
           {buttons.map((btn, index) => (
             <Button key={index}>
-              <Logo src={btn.src} alt={btn.alt} width={15} height={15} />
-              {btn.title}
+              <span
+                css={{
+                  ':before': {
+                    content: "''",
+                    background:
+                      'url(/images/nav_profile_dark.png) no-repeat center left',
+                    paddingLeft: '1.5rem',
+                    opacity: 0.25,
+                  },
+                }}
+              >
+                {btn.title}
+              </span>
             </Button>
           ))}
         </div>

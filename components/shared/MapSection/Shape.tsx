@@ -15,7 +15,7 @@ const style_link_graph = {
     fill: colors.lightBlue,
     outline: '#DDD',
     stroke: '#ccc',
-    strokeWidth: 2,
+    strokeWidth: 1,
   },
   pressed: {
     fill: colors.lightBlue,
@@ -32,7 +32,7 @@ const style_jobs_mode = {
     fill: '#FFF',
     outline: '#DDD',
     stroke: '#ccc',
-    strokeWidth: 2,
+    strokeWidth: 1,
   },
   pressed: {
     fill: '#FFF',

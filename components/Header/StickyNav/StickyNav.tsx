@@ -21,7 +21,7 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
   const toggleSidebar = () => setSidebar((prev) => !prev)
 
   return (
-    <div css={[width < 400 && { '& :nth-child(2)#logo_middle': { display: 'none' }}, scrolling ? styles.fixed : styles.navTrack]}>
+    <div css={[width < 400 && { '& :nth-child(2)#logo_middle': { margin: 0, background: `url(/images/logo_main_${scrolling ? 'fix' : 'hp'}_plain.png) left center/6rem 2rem no-repeat`, '& img[alt="logo_middle"]': { visibility: 'hidden' } } }, scrolling ? styles.fixed : styles.navTrack]}>
       <Logo
         src={
           scrolling ? '/images/shared/menu_fix.png' : '/images/shared/menu.png'
@@ -62,10 +62,9 @@ const StickyNav: FC<IStickyNav> = ({ scrolling, black }) => {
         ))}
       </div>
       <Link href='/request-aba-services'>
-        <a>
+        <a css={width < 500 && { '& > button': { minWidth: '7rem', margin: 0, padding: 0 }}}>
           <Button isScroll={scrolling} navBtn>
-            {/* <span css={styles.btnText}>Request ABA Therapy</span> */}
-            Request ABA Therapy
+            {width < 500 ? 'ABA Therapy' : 'Request ABA Therapy'}
           </Button>
         </a>
       </Link>

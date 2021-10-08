@@ -173,7 +173,7 @@ export const style = {
       justifyContent: ['center', 'center', '', ''],
       gap: [0, 0, '2rem', '2rem'],
       height: ['100%', '100%', '76px', '76px'],
-      maxWidth: ['390px', '390px', '100%', '100%'],
+      maxWidth: ['280px', '280px', '100%', '100%'],
       margin: ['0 auto', '0 auto', 0, 0],
       padding: ['20px 0', '20px 0', '0', '0 250px'],
       border: ['1px solid #ddd', '1px solid #ddd', '0', '0'],
@@ -186,16 +186,16 @@ export const style = {
       paddingLeft: '16px',
       cursor: 'pointer'
     },
-    text: { fontSize: 15, color: colors.black10, padding: '0 0 0 15' },
-    title: {
+    text: mq({ fontSize: [12, 15, 15, 15], color: colors.black10, padding: '0 0 0 15' }),
+    title: mq({
       fontWeight: 700,
-      fontSize: 20,
+      fontSize: [14, 20, 20, 20],
       fontFamily: `'Roboto Slab', serif`,
       margin: 0,
       padding: '0 0 0 15',
       cursor: 'pointer',
       whiteSpace: 'nowrap',
-    }
+    })
   },
   works: {
     card: {

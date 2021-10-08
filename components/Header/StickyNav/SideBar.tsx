@@ -1,5 +1,6 @@
 import { Interpolation, Theme } from '@emotion/react'
 import { useState } from 'react'
+
 import Button from 'components/shared/Button'
 import Logo from 'components/Header/Logo'
 import { navs } from 'components/Header/StickyNav/nav_mocks'
@@ -9,13 +10,13 @@ import { mq } from 'styles/styles'
 import DropdownLink from 'components/Header/StickyNav/DropdownLink'
 
 const buttons = [
-  { title: 'Find RBT Training', src: '/images/nav_docs_dark.png', alt: 'docs' },
+  { title: 'Find RBT Training', src: 'docs', alt: 'docs' },
   {
     title: 'Parent Portal Login',
-    src: '/images/nav_profile.png',
+    src: 'profile',
     alt: 'portal',
   },
-  { title: 'Team PBS login', src: '/images/nav_profile.png', alt: 'docs' },
+  { title: 'Team PBS login', src: 'profile', alt: 'team' },
 ]
 
 const Controller = mq({
@@ -71,7 +72,7 @@ const sidebarContent = {
   zIndex: 999,
   '& .sidebar_css': {
     paddingLeft: '1.5rem',
-  }
+  },
 } as Interpolation<Theme>
 
 const SideBar = ({ width, setSidebar }) => {
@@ -98,11 +99,9 @@ const SideBar = ({ width, setSidebar }) => {
         link='/'
       />
       <div css={closeIcon} onClick={setSidebar} />
-      <div
-        css={sidebarContent}
-      >
+      <div css={sidebarContent}>
         <a
-          css={styles.sideNavLink}
+          css={[styles.sideNavLink, toggle1 ? styles.iconUp : styles.iconDown]}
           onClick={() => {
             clearAll()
             toggle1 ? setToggle1(false) : setToggle1(true)
@@ -120,7 +119,7 @@ const SideBar = ({ width, setSidebar }) => {
             />
           ))}
         <a
-          css={styles.sideNavLink}
+          css={[styles.sideNavLink, toggle2 ? styles.iconUp : styles.iconDown]}
           onClick={() => {
             clearAll()
             toggle2 ? setToggle2(false) : setToggle2(true)
@@ -139,7 +138,7 @@ const SideBar = ({ width, setSidebar }) => {
           ))}
         <a css={styles.sideNavLink}>{navs[2].title}</a>
         <a
-          css={styles.sideNavLink}
+          css={[styles.sideNavLink, toggle4 ? styles.iconUp : styles.iconDown]}
           onClick={() => {
             clearAll()
             toggle4 ? setToggle4(false) : setToggle4(true)
@@ -157,7 +156,7 @@ const SideBar = ({ width, setSidebar }) => {
             />
           ))}
         <a
-          css={styles.sideNavLink}
+          css={[styles.sideNavLink, toggle5 ? styles.iconUp : styles.iconDown]}
           onClick={() => {
             clearAll()
             toggle5 ? setToggle5(false) : setToggle5(true)
@@ -175,11 +174,29 @@ const SideBar = ({ width, setSidebar }) => {
             />
           ))}
       </div>
-      <div css={Controller}>
+      <div
+        css={[
+          Controller,
+          width < 900
+            ? { width: '100%', '& button': { padding: '.5rem 0' } }
+            : { width: '100%', '& button': { padding: '1rem 0' } },
+        ]}
+      >
         {buttons.map((btn, index) => (
           <Button key={index}>
-            <Logo src={btn.src} alt={btn.alt} width={15} height={15} />
-            {btn.title}
+            <span
+              css={{
+                ':before': {
+                  content: "''",
+                  background:
+                    `url(/images/nav_${btn.src}_dark.png) no-repeat center left`,
+                  paddingLeft: '1.5rem',
+                  opacity: 0.25,
+                },
+              }}
+            >
+              {btn.title}
+            </span>
           </Button>
         ))}
       </div>

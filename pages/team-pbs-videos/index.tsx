@@ -1,12 +1,12 @@
-import ReactPlayer from 'react-player/lazy'
-import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 
 import Layout from 'components/Layout/Layout'
 import Flexbox from 'components/shared/Flexbox'
 import { IMeta } from 'interfaces'
 import { colors } from 'utils/constants'
 import { videos } from 'utils/mock/videos'
-import { useEffect } from 'react'
+
+const VideoPlayer = dynamic(() => import('components/shared/TeamPbsVideos/VideoPlayer'))
 
 const text = {
   title: 'Join Our Team',
@@ -20,11 +20,6 @@ const metaDesc: IMeta = {
 }
 
 const PBSVideos = () => {
-  const router = useRouter()
-
-  useEffect(() => {
-    console.log('loaded videos: ', videos);
-  }, [])
 
   return (
     <Layout
@@ -41,31 +36,8 @@ const PBSVideos = () => {
         items='center'
         css={{ flexWrap: 'wrap' }}
       >
-        {videos.map(({ title, date, url, id }) => (
-          <Flexbox
-            key={id}
-            justify=''
-            items='flex-start'
-            col
-            css={{
-              minHeight: '400px',
-              maxWidth: '33%',
-              flex: '0 0 33%',
-              padding: '0 1rem',
-            }}
-          >
-            <ReactPlayer
-              css={{ cursor: 'pointer' }}
-              playing={false}
-              onPlay={() => router.push(`/team-pbs-videos/${id}`)}
-              width='400px'
-              height='230px'
-              controls
-              url={url}
-            />
-            <h4 css={{ fontSize: 25, fontWeight: 700 }}>{title}</h4>
-            <p css={{ color: colors.darkGray }}>{date}</p>
-          </Flexbox>
+        {videos.map(video => (
+          <VideoPlayer {...video} />
         ))}
       </Flexbox>
     </Layout>

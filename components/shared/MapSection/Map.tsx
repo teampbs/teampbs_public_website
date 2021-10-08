@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ComposableMap,  } from 'react-simple-maps'
+import { ComposableMap } from 'react-simple-maps'
 
 import canada_json from 'components/shared/MapSection/usa_provinces.json'
 import usa_json from 'components/shared/MapSection/usa_geojson.json'

@@ -15,13 +15,40 @@ export const styles = {
     lineHeight: '46px',
     fontWeight: 600,
     padding: '0 1rem',
+    transition: 'color 0.3s',
     '& .link:hover': {
       color: colors.lightBlue,
-      transition: '1s',
+      transition: 'color 0.3s',
     },
     flexGrow: 1,
     display: ['none', 'none', 'none', 'block'],
   }),
+  iconDown: {
+    position: 'relative',
+    ':before': {
+      content: "''",
+      position: 'absolute',
+      left: 30,
+      width: 15,
+      height: '100%',
+      backgroundImage: 'url(/images/pages/Index/nav_down_sticky.png)', 
+      backgroundPosition: 'left center',
+      backgroundRepeat: 'no-repeat',
+    }
+  },
+  iconUp: {
+    position: 'relative',
+    ':before': {
+      content: "''",
+      position: 'absolute',
+      left: 30,
+      width: 15,
+      height: '100%',
+      backgroundImage: 'url(/images/pages/Index/nav_up_sticky.png)',
+      backgroundPosition: 'left center',
+      backgroundRepeat: 'no-repeat',
+    }
+  },
   sideNavLink: mq({
     minWidth: '100px',
     position: 'relative',
@@ -34,11 +61,15 @@ export const styles = {
     fontWeight: 600,
     display: 'flex',
     color: colors.black20,
-  }),
-    '& .link:hover': {
+    ':hover': {
       color: colors.lightBlue,
-      transition: '1s',
+      transition: 'color .3s linear',
     },
+  }),
+  '& .link:hover': {
+    color: colors.lightBlue,
+    transition: '.3s',
+  },
   dropdownContainer: { 
     display: 'flex',
     flexDirection: 'column',
