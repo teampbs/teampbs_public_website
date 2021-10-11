@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import Link from 'next/link'
 
 import { mq } from 'styles/styles'
@@ -24,11 +24,11 @@ const HideOnSmall = mq({
 })
 
 const scrollOn = mq({
-  marginTop: ['350px', '350px', '0', '0'],
+  marginTop: ['21.875rem', '21.875rem', '0', '0'],
 })
 
 const scrollOff = mq({
-  marginTop: ['280px', '280px', '0', '0'],
+  marginTop: ['7.5rem', '17.5rem', '0', '0'],
 })
 
 // TODO display: flex fix
@@ -56,6 +56,12 @@ const TitleSection: FC<ITitleSection> = ({
 }) => {
   // const { width } = useWindowDimensions()
 
+  useEffect(() => {
+    console.log('+++desc+++', description);
+    
+  }, [])
+  
+
   return (
     <>
       <section css={sectionStyle}>
@@ -67,7 +73,7 @@ const TitleSection: FC<ITitleSection> = ({
             {subtitle}
           </Title>
         )}
-        <Disclaimer m='0 0 2rem 0' fs='18px' mw='700px' css={moreInfo ? { display: 'flex' } : HideOnSmall}>
+        <Disclaimer m='0 0 2rem 0' fs='17px' mw='700px' css={moreInfo ? { display: 'flex' } : HideOnSmall}>
           {description}
         </Disclaimer>
         {moreInfo && (

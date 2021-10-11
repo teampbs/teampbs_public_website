@@ -10,7 +10,7 @@ import { mediaCardList } from 'components/Index/HowItWorks/media.mock'
 const text = {
   title: 'ABA Therapy',
   subtitle: 'Creating quality of life outcomes that last',
-  description: '',
+  description: 'Positive Behavior Supports Corporation embraces a specific approach to delivery of applied behavior analysis (ABA) therapy: Positive behavior support (PBS) which is a research-based approach to supporting people of all ages with behavioral challenges in home, school, and community settings.',
 }
 
 const metaDesc: IMeta = {

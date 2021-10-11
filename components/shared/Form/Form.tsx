@@ -19,18 +19,21 @@ const containerForm = mq({
 const Form = ({ children, url }) => {
   const methods = useForm({ mode: 'onBlur' })
 
-  const onSubmit = async (data) => {
-    const res = await fetch(url, {
-      body: JSON.stringify({
-        data
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST'
-    })
+  const onSubmit = (data) => {
+    // const res = await fetch(url, {
+    //   body: JSON.stringify({
+    //     data
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   method: 'POST'
+    // })
 
-    await res.json()
+    // await res.json()
+
+    console.log(data, url);
+    
   }
   const onError = error => console.error(error)
 

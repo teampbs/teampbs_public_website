@@ -6,8 +6,18 @@ import { IMeta } from 'interfaces'
 import { colors } from 'utils/constants'
 import { videos } from 'utils/mock/videos'
 import { useRouter } from 'next/router'
+import { mq } from 'styles/styles'
 
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
+
+const styles = {
+  wrap: mq({
+    minHeight: '400px',
+    maxWidth: '33%',
+    flex: '0 0 33%',
+    padding: '0 1rem',
+  })
+}
 
 const text = {
   title: 'Join Our Team',
@@ -44,12 +54,7 @@ const PBSVideos = () => {
             justify=''
             items='flex-start'
             col
-            css={{
-              minHeight: '400px',
-              maxWidth: '33%',
-              flex: '0 0 33%',
-              padding: '0 1rem',
-            }}
+            css={styles.wrap}
           >
             <ReactPlayer
               css={{ cursor: 'pointer' }}

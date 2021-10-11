@@ -10,7 +10,7 @@ const NavLink: FC<INavLink> = ({ title, links, isEmpty, isSticky, isSide }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <a
+    <div
       css={isSide ? styles.sideNavLink : styles.navLink}
       onMouseLeave={() => setIsOpen(false)}
     >
@@ -43,7 +43,7 @@ const NavLink: FC<INavLink> = ({ title, links, isEmpty, isSticky, isSide }) => {
           ))}
         </div>
       )}
-    </a>
+    </div>
   )
 }
 

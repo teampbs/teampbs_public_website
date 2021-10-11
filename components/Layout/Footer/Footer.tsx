@@ -102,17 +102,15 @@ const buttons = [
 ]
 
 const LinkList: FC<{ url: string }> = ({ children, url }) => (
-  <Link href={url}>
-    <a>
-      <li
-        css={{
-          padding: '8px 15px 8px 0',
-        }}
-      >
-        {children}
-      </li>
-    </a>
-  </Link>
+  <li
+    css={{
+      padding: '8px 15px 8px 0',
+    }}
+  >
+    <Link href={url}>
+      <a>{children}</a>
+    </Link>
+  </li>
 )
 
 const customerLinks = (
@@ -252,7 +250,10 @@ const Footer = () => {
                   margin='1rem 0'
                   css={{
                     '& a': { filter: 'grayscale(1) brightness(2)' },
-                    '& a:hover': { transition: 'all .3s linear', filter: 'grayscale(1) brightness(1.5)' },
+                    '& a:hover': {
+                      transition: 'all .3s linear',
+                      filter: 'grayscale(1) brightness(1.5)',
+                    },
                   }}
                 >
                   <a href='https://www.facebook.com/pbscorp/'>

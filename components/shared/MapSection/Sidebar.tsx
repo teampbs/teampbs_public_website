@@ -13,14 +13,14 @@ const Sidebar = ({ jobs_mode }) => (
     {React.Children.toArray(
       usa_provinces.map((name) => (
         <Flexbox height='46px' justify='' gap='1rem'>
-          {jobs_mode || (
+          {/* {jobs_mode || (
             <img
               css={style.sidebar.img}
               src='/images/pages/Index/breadcrumb-arrow.png'
               alt='arrow_down'
             />
-          )}
-          <Text css={style.sidebar.name} size='20px'>
+          )} */}
+          <Text css={[style.sidebar.name, jobs_mode || style.sidebar.arrow]} size='20px'>
             {name}
           </Text>
         </Flexbox>

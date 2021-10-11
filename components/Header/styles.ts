@@ -105,13 +105,14 @@ export const styles = {
     }
   } as Interpolation<Theme>,
   video: mq({
-    height: ['50vh', '50vh', '90vh', '90vh'],
+    height: ['17rem', '50vh', '90vh', '90vh'],
     objectFit: 'cover',
     width: '100vw',
     position: 'absolute',
     top: 0,
     left: 0,
     zIndex: -1,
+    aspectRatio: '1 / 1',
   }),
   topNav: {
     link: {
@@ -200,7 +201,7 @@ export const HeadingImgMq = mq({
 })
 
 export const HeadingMq = mq({
-  height: ['50vh', '50vh', '90vh', '90vh'],
+  height: ['17rem', '50vh', '90vh', '90vh'],
 })
 
 export const Frame = styled.div({

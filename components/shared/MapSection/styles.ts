@@ -60,7 +60,21 @@ export const style = {
       height: '.8rem',
       transform: 'rotate(90deg)',
     },
-    name: { cursor: 'pointer', color: colors.black10 }
+    name: { cursor: 'pointer', color: colors.black10, position: 'relative' },
+    arrow: {
+      padding: '0 0 0 30px',
+      ':before': {
+        content: "''",
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        left: 0, 
+        width: 8, 
+        height: 4, 
+        background: `url(/images/shared/bot_arrow_hp.png) left no-repeat`,
+        backgroundPosition: '50% 50%',
+      }
+    }
   },
   heading: {
     fontSize: '2.25rem',

@@ -14,6 +14,7 @@ const Presentation = () => {
     onEnter: ({ unobserve }) => unobserve()
   })
 
+
   return (
     <div css={style.presentation.wrapper} ref={observe}>
       <header css={style.presentation.header}>
@@ -34,7 +35,7 @@ const Presentation = () => {
           </Button>
         </div>
       </header>
-      {inView  && <ReactPlayer
+      {inView && <ReactPlayer
         style={style.presentation.video}
         width='100%'
         height='100%'
